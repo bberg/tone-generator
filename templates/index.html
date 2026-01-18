@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tone Generator - Pure Sine, Square, Sawtooth & Triangle Waves</title>
+    <meta name="description" content="Free online tone generator with sine, square, sawtooth, and triangle waveforms. Precise frequency control from 20Hz to 20kHz. Perfect for audio testing, tuning, and education.">
+    <meta name="keywords" content="tone generator, frequency generator, sine wave, square wave, sawtooth wave, triangle wave, audio test, tuning fork, A440, hearing test">
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon.svg') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="page-header">
+            <div class="header-content">
+                <h1>Tone Generator</h1>
+                <p class="tagline">Pure sine, square, sawtooth & triangle waves</p>
+            </div>
+            <div class="header-badges">
+                <span class="header-badge"><i class="ri-music-2-line"></i> Tuning</span>
+                <span class="header-badge"><i class="ri-equalizer-line"></i> Testing</span>
+                <span class="header-badge"><i class="ri-graduation-cap-line"></i> Education</span>
+            </div>
+        </header>
+
+        <nav class="mini-nav">
+            <a href="#generator" class="nav-link"><i class="ri-sound-module-line"></i> Generator</a>
+            <a href="#dual-tone" class="nav-link"><i class="ri-stack-line"></i> Dual Tone</a>
+            <a href="#presets" class="nav-link"><i class="ri-bookmark-line"></i> Presets</a>
+            <a href="#about-waves" class="nav-link"><i class="ri-question-line"></i> Science</a>
+        </nav>
+
+        <div class="main-controls" id="generator">
+            <!-- Waveform Selection -->
+            <div class="presets">
+                <div class="preset-group">
+                    <h3>Waveform Type</h3>
+                    <div class="preset-buttons">
+                        <button class="preset-btn active" data-waveform="sine">
+                            <i class="ri-radio-button-line"></i> Sine
+                        </button>
+                        <button class="preset-btn" data-waveform="square">
+                            <i class="ri-checkbox-blank-line"></i> Square
+                        </button>
+                        <button class="preset-btn" data-waveform="sawtooth">
+                            <i class="ri-arrow-right-up-line"></i> Sawtooth
+                        </button>
+                        <button class="preset-btn" data-waveform="triangle">
+                            <i class="ri-arrow-up-line"></i> Triangle
+                        </button>
+                    </div>
+                </div>
+                <div class="preset-group" id="presets">
+                    <h3>Quick Presets</h3>
+                    <div class="preset-buttons">
+                        <button class="preset-btn" data-preset="a440">
+                            <i class="ri-music-line"></i> A440
+                        </button>
+                        <button class="preset-btn" data-preset="middleC">
+                            <i class="ri-piano-line"></i> Middle C
+                        </button>
+                        <button class="preset-btn" data-preset="bass">
+                            <i class="ri-volume-down-line"></i> 100 Hz
+                        </button>
+                        <button class="preset-btn" data-preset="treble">
+                            <i class="ri-volume-up-line"></i> 1 kHz
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Status -->
+            <div class="status-badge ready" id="statusBadge">
+                <span class="status-icon">&#9679;</span>
+                <span class="status-text">Ready</span>
+            </div>
+
+            <!-- Play Button -->
+            <div class="action-buttons">
+                <button id="playButton" class="primary-btn">
+                    <i class="ri-play-fill"></i>
+                    <span>Play</span>
+                </button>
+            </div>
+
+            <!-- Waveform Visualization -->
+            <div class="waveform-container">
+                <div class="waveform-header">
+                    <span class="waveform-title">Waveform</span>
+                    <span class="waveform-info" id="waveformInfo">Sine @ 440 Hz</span>
+                </div>
+                <canvas id="waveformCanvas"></canvas>
+            </div>
+        </div>
+
+        <!-- Main Controls -->
+        <div class="controls" id="main-controls">
+            <div class="control-group">
+                <h3>Frequency Control</h3>
+
+                <div class="frequency-input-group">
+                    <label for="frequency">Frequency (Hz)</label>
+                    <div class="frequency-row">
+                        <input type="range" id="frequencySlider" min="20" max="20000" value="440" step="1">
+                        <input type="number" id="frequencyInput" min="20" max="20000" value="440" step="1">
+                    </div>
+                    <span class="value" id="frequencyValue">440 Hz</span>
+                </div>
+
+                <div class="frequency-fine-tune">
+                    <label>Fine Tune</label>
+                    <div class="fine-tune-buttons">
+                        <button class="fine-btn" data-adjust="-10">-10</button>
+                        <button class="fine-btn" data-adjust="-1">-1</button>
+                        <button class="fine-btn" data-adjust="-0.1">-0.1</button>
+                        <button class="fine-btn" data-adjust="0.1">+0.1</button>
+                        <button class="fine-btn" data-adjust="1">+1</button>
+                        <button class="fine-btn" data-adjust="10">+10</button>
+                    </div>
+                </div>
+
+                <div class="note-display">
+                    <span class="note-label">Nearest Note:</span>
+                    <span class="note-value" id="noteValue">A4</span>
+                    <span class="note-cents" id="noteCents">0 cents</span>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <h3>Volume Control</h3>
+
+                <label for="volume">Master Volume</label>
+                <input type="range" id="volume" min="0" max="100" value="50">
+                <span class="value" id="volumeValue">50%</span>
+
+                <label for="attack">Attack (ms)</label>
+                <input type="range" id="attack" min="0" max="500" value="10">
+                <span class="value" id="attackValue">10 ms</span>
+
+                <label for="release">Release (ms)</label>
+                <input type="range" id="release" min="0" max="500" value="50">
+                <span class="value" id="releaseValue">50 ms</span>
+            </div>
+        </div>
+
+        <!-- Dual Tone Mode -->
+        <div class="controls" id="dual-tone">
+            <div class="control-group dual-tone-group">
+                <h3>Dual Tone Mode</h3>
+
+                <div class="dual-tone-toggle">
+                    <label class="toggle-label">
+                        <input type="checkbox" id="dualToneEnabled">
+                        <span class="toggle-switch"></span>
+                        <span class="toggle-text">Enable Second Oscillator</span>
+                    </label>
+                </div>
+
+                <div class="dual-tone-controls" id="dualToneControls">
+                    <label for="frequency2">Second Frequency (Hz)</label>
+                    <div class="frequency-row">
+                        <input type="range" id="frequencySlider2" min="20" max="20000" value="554" step="1">
+                        <input type="number" id="frequencyInput2" min="20" max="20000" value="554" step="1">
+                    </div>
+                    <span class="value" id="frequencyValue2">554 Hz (C#5)</span>
+
+                    <label for="volume2">Second Oscillator Volume</label>
+                    <input type="range" id="volume2" min="0" max="100" value="50">
+                    <span class="value" id="volumeValue2">50%</span>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <h3>Musical Intervals</h3>
+                <p class="interval-info">Set second tone relative to first</p>
+                <div class="interval-buttons">
+                    <button class="interval-btn" data-interval="1">Unison</button>
+                    <button class="interval-btn" data-interval="1.0595">m2</button>
+                    <button class="interval-btn" data-interval="1.1225">M2</button>
+                    <button class="interval-btn" data-interval="1.1892">m3</button>
+                    <button class="interval-btn" data-interval="1.2599">M3</button>
+                    <button class="interval-btn" data-interval="1.3348">P4</button>
+                    <button class="interval-btn" data-interval="1.4142">Tritone</button>
+                    <button class="interval-btn" data-interval="1.4983">P5</button>
+                    <button class="interval-btn" data-interval="1.5874">m6</button>
+                    <button class="interval-btn" data-interval="1.6818">M6</button>
+                    <button class="interval-btn" data-interval="1.7818">m7</button>
+                    <button class="interval-btn" data-interval="1.8877">M7</button>
+                    <button class="interval-btn" data-interval="2">Octave</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tuning Reference Presets -->
+        <section class="content-section presets-section" id="tuning-presets">
+            <article class="content-article">
+                <h2>Tuning Reference Frequencies</h2>
+                <p class="intro-text">Standard reference frequencies for instrument tuning, audio calibration, and testing. Click any frequency to play it instantly.</p>
+
+                <div class="info-grid">
+                    <div class="info-card preset-card">
+                        <h4><i class="ri-music-2-line"></i> Concert Pitch</h4>
+                        <div class="preset-freq-buttons">
+                            <button class="freq-preset-btn" data-freq="440">A4 = 440 Hz</button>
+                            <button class="freq-preset-btn" data-freq="442">A4 = 442 Hz</button>
+                            <button class="freq-preset-btn" data-freq="432">A4 = 432 Hz</button>
+                        </div>
+                        <p class="noise-specs">Standard orchestral tuning references</p>
+                    </div>
+
+                    <div class="info-card preset-card">
+                        <h4><i class="ri-guitar-line"></i> Guitar Strings (Standard)</h4>
+                        <div class="preset-freq-buttons">
+                            <button class="freq-preset-btn" data-freq="82.41">E2 = 82 Hz</button>
+                            <button class="freq-preset-btn" data-freq="110">A2 = 110 Hz</button>
+                            <button class="freq-preset-btn" data-freq="146.83">D3 = 147 Hz</button>
+                            <button class="freq-preset-btn" data-freq="196">G3 = 196 Hz</button>
+                            <button class="freq-preset-btn" data-freq="246.94">B3 = 247 Hz</button>
+                            <button class="freq-preset-btn" data-freq="329.63">E4 = 330 Hz</button>
+                        </div>
+                        <p class="noise-specs">EADGBE standard tuning</p>
+                    </div>
+
+                    <div class="info-card preset-card">
+                        <h4><i class="ri-sound-module-line"></i> Audio Test Tones</h4>
+                        <div class="preset-freq-buttons">
+                            <button class="freq-preset-btn" data-freq="20">20 Hz</button>
+                            <button class="freq-preset-btn" data-freq="100">100 Hz</button>
+                            <button class="freq-preset-btn" data-freq="1000">1 kHz</button>
+                            <button class="freq-preset-btn" data-freq="10000">10 kHz</button>
+                            <button class="freq-preset-btn" data-freq="15000">15 kHz</button>
+                            <button class="freq-preset-btn" data-freq="20000">20 kHz</button>
+                        </div>
+                        <p class="noise-specs">Speaker and hearing range tests</p>
+                    </div>
+
+                    <div class="info-card preset-card">
+                        <h4><i class="ri-piano-line"></i> Piano Notes</h4>
+                        <div class="preset-freq-buttons">
+                            <button class="freq-preset-btn" data-freq="261.63">C4 (Middle C)</button>
+                            <button class="freq-preset-btn" data-freq="293.66">D4</button>
+                            <button class="freq-preset-btn" data-freq="329.63">E4</button>
+                            <button class="freq-preset-btn" data-freq="349.23">F4</button>
+                            <button class="freq-preset-btn" data-freq="392">G4</button>
+                            <button class="freq-preset-btn" data-freq="440">A4</button>
+                            <button class="freq-preset-btn" data-freq="493.88">B4</button>
+                            <button class="freq-preset-btn" data-freq="523.25">C5</button>
+                        </div>
+                        <p class="noise-specs">One octave from Middle C</p>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- Educational Content -->
+        <section class="content-section" id="about-waves">
+            <article class="content-article">
+                <h2>Understanding Waveforms</h2>
+                <p class="intro-text">Different waveforms produce distinct timbres even at the same frequency. This is because each waveform contains a unique combination of harmonics - integer multiples of the fundamental frequency. Understanding these differences is essential for audio synthesis, testing, and acoustics.</p>
+
+                <h3>The Four Basic Waveforms</h3>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h4><i class="ri-radio-button-line"></i> Sine Wave</h4>
+                        <p>The purest tone possible, containing only the fundamental frequency with no harmonics. Sine waves are the building blocks of all other sounds - any complex waveform can be decomposed into a series of sine waves (Fourier analysis). They sound smooth and flute-like.</p>
+                        <p class="noise-specs"><strong>Harmonics:</strong> Fundamental only<br><strong>Character:</strong> Pure, smooth, clean<br><strong>Uses:</strong> Tuning, calibration, sub-bass</p>
+                    </div>
+
+                    <div class="info-card">
+                        <h4><i class="ri-checkbox-blank-line"></i> Square Wave</h4>
+                        <p>Contains only odd harmonics (1st, 3rd, 5th, 7th...) at amplitudes of 1/n. This creates a hollow, woody sound reminiscent of vintage synthesizers and clarinet-like tones. Square waves are useful for creating rich, hollow timbres.</p>
+                        <p class="noise-specs"><strong>Harmonics:</strong> Odd only (1, 3, 5, 7...)<br><strong>Character:</strong> Hollow, woody, buzzy<br><strong>Uses:</strong> Synthesis, 8-bit sounds, testing</p>
+                    </div>
+
+                    <div class="info-card">
+                        <h4><i class="ri-arrow-right-up-line"></i> Sawtooth Wave</h4>
+                        <p>Contains all harmonics (odd and even) at amplitudes of 1/n. This gives it the richest harmonic content of the basic waveforms, producing a bright, buzzy, brass-like sound. Excellent for subtractive synthesis.</p>
+                        <p class="noise-specs"><strong>Harmonics:</strong> All (1, 2, 3, 4, 5...)<br><strong>Character:</strong> Bright, brassy, rich<br><strong>Uses:</strong> Lead synths, strings, brass</p>
+                    </div>
+
+                    <div class="info-card">
+                        <h4><i class="ri-arrow-up-line"></i> Triangle Wave</h4>
+                        <p>Contains only odd harmonics like square waves, but at amplitudes of 1/n squared. This results in a softer, rounder sound than square waves - somewhere between sine and square. Often used for soft pads and mellow tones.</p>
+                        <p class="noise-specs"><strong>Harmonics:</strong> Odd only (weaker)<br><strong>Character:</strong> Soft, mellow, rounded<br><strong>Uses:</strong> Flutes, soft leads, LFOs</p>
+                    </div>
+                </div>
+
+                <h3>Frequency and Pitch</h3>
+                <p>Frequency is measured in Hertz (Hz) - the number of complete wave cycles per second. Human hearing typically ranges from 20 Hz to 20,000 Hz (20 kHz), though this upper limit decreases with age. Musical pitch is directly related to frequency:</p>
+
+                <ul class="feature-list">
+                    <li><strong>A4 = 440 Hz:</strong> The international standard for concert pitch, used to tune orchestras worldwide</li>
+                    <li><strong>Octave relationship:</strong> Doubling the frequency raises the pitch by one octave (A4 = 440 Hz, A5 = 880 Hz)</li>
+                    <li><strong>Equal temperament:</strong> Each semitone is a ratio of 2^(1/12) = 1.0595, allowing modulation between keys</li>
+                    <li><strong>Frequency range:</strong> Bass notes (20-250 Hz), midrange (250-4000 Hz), treble (4000-20000 Hz)</li>
+                    <li><strong>Fundamental vs harmonics:</strong> The lowest frequency determines pitch; harmonics determine timbre</li>
+                </ul>
+
+                <h3>Psychoacoustics of Dual Tones</h3>
+                <p>When two tones play simultaneously, interesting perceptual phenomena occur:</p>
+
+                <ul class="feature-list">
+                    <li><strong>Beating:</strong> Two close frequencies create amplitude fluctuations at the difference frequency. At 440 Hz and 442 Hz, you hear 2 "beats" per second</li>
+                    <li><strong>Consonance/Dissonance:</strong> Simple frequency ratios (2:1, 3:2, 4:3) sound consonant; complex ratios create tension</li>
+                    <li><strong>Combination tones:</strong> At high volumes, you may perceive phantom tones at the sum and difference frequencies</li>
+                    <li><strong>Binaural beats:</strong> Different frequencies in each ear can create perceived pulsing (requires headphones)</li>
+                    <li><strong>Musical intervals:</strong> Perfect fifth (3:2 ratio), perfect fourth (4:3), major third (5:4) are most consonant</li>
+                </ul>
+
+                <h3>Practical Applications</h3>
+                <ul class="feature-list">
+                    <li><strong>Instrument Tuning:</strong> Use sine waves at reference frequencies to tune guitars, pianos, and other instruments</li>
+                    <li><strong>Speaker Testing:</strong> Sweep through frequencies to identify speaker response and room acoustics</li>
+                    <li><strong>Hearing Tests:</strong> Test your hearing range, though proper audiometry requires calibrated equipment</li>
+                    <li><strong>Sound Design:</strong> Understanding waveforms is fundamental to synthesis and audio production</li>
+                    <li><strong>Tinnitus Frequency Matching:</strong> Identify the frequency of tinnitus for masking or habituation therapy</li>
+                    <li><strong>Physics Education:</strong> Demonstrate wave properties, harmonics, and acoustic principles</li>
+                </ul>
+
+                <h3>Safe Listening</h3>
+                <p>Pure tones can be more fatiguing than complex sounds. Follow these guidelines:</p>
+                <ul class="feature-list">
+                    <li><strong>Start quiet:</strong> Always begin at low volume and increase gradually</li>
+                    <li><strong>Avoid extremes:</strong> Very low (below 40 Hz) or high (above 15 kHz) frequencies can be uncomfortable at high volumes</li>
+                    <li><strong>Take breaks:</strong> Extended exposure to pure tones can cause temporary hearing fatigue</li>
+                    <li><strong>Use quality equipment:</strong> Poor speakers can distort, especially at frequency extremes</li>
+                </ul>
+            </article>
+        </section>
+
+        <footer class="site-footer">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="footer-logo">Tone Generator</span>
+                    <p>Free online tone generator with sine, square, sawtooth, and triangle waveforms. Perfect for tuning, testing, and audio education.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <a href="#generator">Generator</a>
+                    <a href="#dual-tone">Dual Tone</a>
+                    <a href="#tuning-presets">Tuning Presets</a>
+                    <a href="#about-waves">The Science</a>
+                </div>
+                <div class="footer-related">
+                    <h4>Related Tools</h4>
+                    <a href="https://noisegenerator.com" target="_blank">Noise Generator</a>
+                    <a href="https://sirengenerator.com" target="_blank">Siren Generator</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Part of the Audio Tools Network. For educational and personal use.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/tone.js') }}"></script>
+</body>
+</html>
