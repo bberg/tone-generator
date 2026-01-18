@@ -3,13 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tone Generator - Pure Sine, Square, Sawtooth & Triangle Waves</title>
-    <meta name="description" content="Free online tone generator with sine, square, sawtooth, and triangle waveforms. Precise frequency control from 20Hz to 20kHz. Perfect for audio testing, tuning, and education.">
-    <meta name="keywords" content="tone generator, frequency generator, sine wave, square wave, sawtooth wave, triangle wave, audio test, tuning fork, A440, hearing test">
+    <title>Tone Generator - Pure Sine, Square, Sawtooth & Triangle Waves | Free Online</title>
+    <meta name="description" content="Free online tone generator with sine, square, sawtooth, and triangle waveforms. Frequency sweep, hearing test mode, instrument tuning presets. 20Hz to 20kHz precision control.">
+    <meta name="keywords" content="tone generator, frequency generator, sine wave, square wave, sawtooth wave, triangle wave, audio test, tuning fork, A440, hearing test, frequency sweep, guitar tuner, instrument tuning">
     <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon.svg') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Tone Generator",
+        "description": "Free online tone generator with multiple waveforms, frequency sweep, and hearing test mode",
+        "url": "https://tonegenerator.com",
+        "applicationCategory": "MultimediaApplication",
+        "operatingSystem": "Any",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
 </head>
 <body>
     <div class="container">
@@ -27,7 +43,8 @@
 
         <nav class="mini-nav">
             <a href="#generator" class="nav-link"><i class="ri-sound-module-line"></i> Generator</a>
-            <a href="#dual-tone" class="nav-link"><i class="ri-stack-line"></i> Dual Tone</a>
+            <a href="#sweep" class="nav-link"><i class="ri-line-chart-line"></i> Sweep</a>
+            <a href="#hearing-test" class="nav-link"><i class="ri-ear-line"></i> Hearing Test</a>
             <a href="#presets" class="nav-link"><i class="ri-bookmark-line"></i> Presets</a>
             <a href="#about-waves" class="nav-link"><i class="ri-question-line"></i> Science</a>
         </nav>
@@ -104,7 +121,7 @@
                     <label for="frequency">Frequency (Hz)</label>
                     <div class="frequency-row">
                         <input type="range" id="frequencySlider" min="20" max="20000" value="440" step="1">
-                        <input type="number" id="frequencyInput" min="20" max="20000" value="440" step="1">
+                        <input type="number" id="frequencyInput" min="20" max="20000" value="440" step="0.1">
                     </div>
                     <span class="value" id="frequencyValue">440 Hz</span>
                 </div>
@@ -145,6 +162,183 @@
             </div>
         </div>
 
+        <!-- Frequency Sweep Mode -->
+        <section class="content-section sweep-section" id="sweep">
+            <article class="content-article">
+                <h2><i class="ri-line-chart-line"></i> Frequency Sweep Mode</h2>
+                <p class="intro-text">Sweep through a range of frequencies to test speakers, identify room resonances, or check your hearing range. Essential for audio testing and calibration.</p>
+
+                <div class="sweep-controls">
+                    <div class="sweep-row">
+                        <div class="sweep-input-group">
+                            <label for="sweepStart">Start Frequency (Hz)</label>
+                            <input type="number" id="sweepStart" min="20" max="20000" value="20">
+                        </div>
+                        <div class="sweep-input-group">
+                            <label for="sweepEnd">End Frequency (Hz)</label>
+                            <input type="number" id="sweepEnd" min="20" max="20000" value="20000">
+                        </div>
+                        <div class="sweep-input-group">
+                            <label for="sweepDuration">Duration (seconds)</label>
+                            <input type="number" id="sweepDuration" min="1" max="60" value="10">
+                        </div>
+                    </div>
+                    <div class="sweep-row">
+                        <div class="sweep-input-group">
+                            <label for="sweepType">Sweep Type</label>
+                            <select id="sweepType">
+                                <option value="logarithmic">Logarithmic (recommended)</option>
+                                <option value="linear">Linear</option>
+                            </select>
+                        </div>
+                        <div class="sweep-input-group sweep-checkbox">
+                            <label class="toggle-label">
+                                <input type="checkbox" id="sweepLoop">
+                                <span class="toggle-switch"></span>
+                                <span class="toggle-text">Loop Sweep</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="sweep-display">
+                        <span class="sweep-freq-label">Current: </span>
+                        <span class="sweep-freq-value" id="sweepCurrentFreq">--</span>
+                    </div>
+                    <div class="action-buttons">
+                        <button id="sweepButton" class="primary-btn sweep-btn">
+                            <i class="ri-play-fill"></i>
+                            <span>Start Sweep</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="sweep-presets">
+                    <h4>Quick Sweep Presets</h4>
+                    <div class="preset-freq-buttons">
+                        <button class="freq-preset-btn sweep-preset" data-start="20" data-end="20000" data-duration="10">Full Range (20-20kHz)</button>
+                        <button class="freq-preset-btn sweep-preset" data-start="20" data-end="200" data-duration="5">Sub-Bass (20-200Hz)</button>
+                        <button class="freq-preset-btn sweep-preset" data-start="200" data-end="2000" data-duration="5">Midrange (200-2kHz)</button>
+                        <button class="freq-preset-btn sweep-preset" data-start="2000" data-end="20000" data-duration="5">Treble (2-20kHz)</button>
+                        <button class="freq-preset-btn sweep-preset" data-start="8000" data-end="20000" data-duration="10">High Freq Test</button>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- Hearing Test Mode -->
+        <section class="content-section hearing-section" id="hearing-test">
+            <article class="content-article">
+                <h2><i class="ri-ear-line"></i> Simple Hearing Test</h2>
+                <div class="disclaimer-box">
+                    <i class="ri-information-line"></i>
+                    <p><strong>Disclaimer:</strong> This is not a medical hearing test. Results are for informational purposes only and cannot replace professional audiometry. If you have concerns about your hearing, please consult an audiologist or ENT specialist.</p>
+                </div>
+
+                <p class="intro-text">Test your ability to hear different frequencies. For best results, use quality headphones in a quiet environment. Start at a comfortable volume.</p>
+
+                <div class="hearing-test-controls">
+                    <div class="hearing-test-row">
+                        <div class="ear-select">
+                            <label>Test Ear</label>
+                            <div class="ear-buttons">
+                                <button class="ear-btn active" data-ear="both"><i class="ri-headphone-line"></i> Both</button>
+                                <button class="ear-btn" data-ear="left"><i class="ri-arrow-left-line"></i> Left</button>
+                                <button class="ear-btn" data-ear="right"><i class="ri-arrow-right-line"></i> Right</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="hearing-frequencies">
+                        <h4>Standard Audiometric Frequencies</h4>
+                        <p class="test-instruction">Click each frequency and indicate if you can hear it clearly.</p>
+                        <div class="hearing-freq-grid">
+                            <div class="hearing-freq-item" data-freq="125">
+                                <button class="hearing-freq-btn" data-freq="125">125 Hz</button>
+                                <div class="hearing-result">
+                                    <button class="result-btn yes" data-freq="125" data-result="yes"><i class="ri-check-line"></i></button>
+                                    <button class="result-btn no" data-freq="125" data-result="no"><i class="ri-close-line"></i></button>
+                                </div>
+                            </div>
+                            <div class="hearing-freq-item" data-freq="250">
+                                <button class="hearing-freq-btn" data-freq="250">250 Hz</button>
+                                <div class="hearing-result">
+                                    <button class="result-btn yes" data-freq="250" data-result="yes"><i class="ri-check-line"></i></button>
+                                    <button class="result-btn no" data-freq="250" data-result="no"><i class="ri-close-line"></i></button>
+                                </div>
+                            </div>
+                            <div class="hearing-freq-item" data-freq="500">
+                                <button class="hearing-freq-btn" data-freq="500">500 Hz</button>
+                                <div class="hearing-result">
+                                    <button class="result-btn yes" data-freq="500" data-result="yes"><i class="ri-check-line"></i></button>
+                                    <button class="result-btn no" data-freq="500" data-result="no"><i class="ri-close-line"></i></button>
+                                </div>
+                            </div>
+                            <div class="hearing-freq-item" data-freq="1000">
+                                <button class="hearing-freq-btn" data-freq="1000">1 kHz</button>
+                                <div class="hearing-result">
+                                    <button class="result-btn yes" data-freq="1000" data-result="yes"><i class="ri-check-line"></i></button>
+                                    <button class="result-btn no" data-freq="1000" data-result="no"><i class="ri-close-line"></i></button>
+                                </div>
+                            </div>
+                            <div class="hearing-freq-item" data-freq="2000">
+                                <button class="hearing-freq-btn" data-freq="2000">2 kHz</button>
+                                <div class="hearing-result">
+                                    <button class="result-btn yes" data-freq="2000" data-result="yes"><i class="ri-check-line"></i></button>
+                                    <button class="result-btn no" data-freq="2000" data-result="no"><i class="ri-close-line"></i></button>
+                                </div>
+                            </div>
+                            <div class="hearing-freq-item" data-freq="4000">
+                                <button class="hearing-freq-btn" data-freq="4000">4 kHz</button>
+                                <div class="hearing-result">
+                                    <button class="result-btn yes" data-freq="4000" data-result="yes"><i class="ri-check-line"></i></button>
+                                    <button class="result-btn no" data-freq="4000" data-result="no"><i class="ri-close-line"></i></button>
+                                </div>
+                            </div>
+                            <div class="hearing-freq-item" data-freq="8000">
+                                <button class="hearing-freq-btn" data-freq="8000">8 kHz</button>
+                                <div class="hearing-result">
+                                    <button class="result-btn yes" data-freq="8000" data-result="yes"><i class="ri-check-line"></i></button>
+                                    <button class="result-btn no" data-freq="8000" data-result="no"><i class="ri-close-line"></i></button>
+                                </div>
+                            </div>
+                            <div class="hearing-freq-item" data-freq="12000">
+                                <button class="hearing-freq-btn" data-freq="12000">12 kHz</button>
+                                <div class="hearing-result">
+                                    <button class="result-btn yes" data-freq="12000" data-result="yes"><i class="ri-check-line"></i></button>
+                                    <button class="result-btn no" data-freq="12000" data-result="no"><i class="ri-close-line"></i></button>
+                                </div>
+                            </div>
+                            <div class="hearing-freq-item" data-freq="16000">
+                                <button class="hearing-freq-btn" data-freq="16000">16 kHz</button>
+                                <div class="hearing-result">
+                                    <button class="result-btn yes" data-freq="16000" data-result="yes"><i class="ri-check-line"></i></button>
+                                    <button class="result-btn no" data-freq="16000" data-result="no"><i class="ri-close-line"></i></button>
+                                </div>
+                            </div>
+                            <div class="hearing-freq-item" data-freq="18000">
+                                <button class="hearing-freq-btn" data-freq="18000">18 kHz</button>
+                                <div class="hearing-result">
+                                    <button class="result-btn yes" data-freq="18000" data-result="yes"><i class="ri-check-line"></i></button>
+                                    <button class="result-btn no" data-freq="18000" data-result="no"><i class="ri-close-line"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="hearing-age-reference">
+                        <h4>Typical Hearing Range by Age</h4>
+                        <p class="age-note">High-frequency hearing naturally decreases with age (presbycusis):</p>
+                        <ul class="age-list">
+                            <li><strong>Under 25:</strong> Typically hear up to 17-20 kHz</li>
+                            <li><strong>25-35:</strong> Typically hear up to 15-17 kHz</li>
+                            <li><strong>35-50:</strong> Typically hear up to 12-15 kHz</li>
+                            <li><strong>50-65:</strong> Typically hear up to 10-12 kHz</li>
+                            <li><strong>Over 65:</strong> Typically hear up to 8-10 kHz</li>
+                        </ul>
+                    </div>
+                </div>
+            </article>
+        </section>
+
         <!-- Dual Tone Mode -->
         <div class="controls" id="dual-tone">
             <div class="control-group dual-tone-group">
@@ -162,7 +356,7 @@
                     <label for="frequency2">Second Frequency (Hz)</label>
                     <div class="frequency-row">
                         <input type="range" id="frequencySlider2" min="20" max="20000" value="554" step="1">
-                        <input type="number" id="frequencyInput2" min="20" max="20000" value="554" step="1">
+                        <input type="number" id="frequencyInput2" min="20" max="20000" value="554" step="0.1">
                     </div>
                     <span class="value" id="frequencyValue2">554 Hz (C#5)</span>
 
@@ -196,50 +390,119 @@
         <!-- Tuning Reference Presets -->
         <section class="content-section presets-section" id="tuning-presets">
             <article class="content-article">
-                <h2>Tuning Reference Frequencies</h2>
+                <h2>Instrument Tuning Reference</h2>
                 <p class="intro-text">Standard reference frequencies for instrument tuning, audio calibration, and testing. Click any frequency to play it instantly.</p>
 
                 <div class="info-grid">
                     <div class="info-card preset-card">
-                        <h4><i class="ri-music-2-line"></i> Concert Pitch</h4>
+                        <h4><i class="ri-music-2-line"></i> Concert Pitch Standards</h4>
                         <div class="preset-freq-buttons">
-                            <button class="freq-preset-btn" data-freq="440">A4 = 440 Hz</button>
-                            <button class="freq-preset-btn" data-freq="442">A4 = 442 Hz</button>
-                            <button class="freq-preset-btn" data-freq="432">A4 = 432 Hz</button>
+                            <button class="freq-preset-btn" data-freq="440">A4 = 440 Hz (ISO Standard)</button>
+                            <button class="freq-preset-btn" data-freq="442">A4 = 442 Hz (European)</button>
+                            <button class="freq-preset-btn" data-freq="443">A4 = 443 Hz (Berlin Phil)</button>
+                            <button class="freq-preset-btn" data-freq="432">A4 = 432 Hz (Alternative)</button>
+                            <button class="freq-preset-btn" data-freq="415">A4 = 415 Hz (Baroque)</button>
                         </div>
-                        <p class="noise-specs">Standard orchestral tuning references</p>
+                        <p class="noise-specs">A4=440 Hz adopted as ISO 16 standard in 1955</p>
                     </div>
 
                     <div class="info-card preset-card">
-                        <h4><i class="ri-guitar-line"></i> Guitar Strings (Standard)</h4>
+                        <h4><i class="ri-guitar-line"></i> Guitar - Standard (EADGBE)</h4>
                         <div class="preset-freq-buttons">
-                            <button class="freq-preset-btn" data-freq="82.41">E2 = 82 Hz</button>
-                            <button class="freq-preset-btn" data-freq="110">A2 = 110 Hz</button>
-                            <button class="freq-preset-btn" data-freq="146.83">D3 = 147 Hz</button>
-                            <button class="freq-preset-btn" data-freq="196">G3 = 196 Hz</button>
-                            <button class="freq-preset-btn" data-freq="246.94">B3 = 247 Hz</button>
-                            <button class="freq-preset-btn" data-freq="329.63">E4 = 330 Hz</button>
+                            <button class="freq-preset-btn" data-freq="82.41">E2 (6th)</button>
+                            <button class="freq-preset-btn" data-freq="110">A2 (5th)</button>
+                            <button class="freq-preset-btn" data-freq="146.83">D3 (4th)</button>
+                            <button class="freq-preset-btn" data-freq="196">G3 (3rd)</button>
+                            <button class="freq-preset-btn" data-freq="246.94">B3 (2nd)</button>
+                            <button class="freq-preset-btn" data-freq="329.63">E4 (1st)</button>
                         </div>
-                        <p class="noise-specs">EADGBE standard tuning</p>
+                        <p class="noise-specs">Standard guitar tuning EADGBE</p>
                     </div>
 
                     <div class="info-card preset-card">
-                        <h4><i class="ri-sound-module-line"></i> Audio Test Tones</h4>
+                        <h4><i class="ri-guitar-line"></i> Guitar - Drop D</h4>
                         <div class="preset-freq-buttons">
-                            <button class="freq-preset-btn" data-freq="20">20 Hz</button>
-                            <button class="freq-preset-btn" data-freq="100">100 Hz</button>
-                            <button class="freq-preset-btn" data-freq="1000">1 kHz</button>
-                            <button class="freq-preset-btn" data-freq="10000">10 kHz</button>
-                            <button class="freq-preset-btn" data-freq="15000">15 kHz</button>
-                            <button class="freq-preset-btn" data-freq="20000">20 kHz</button>
+                            <button class="freq-preset-btn" data-freq="73.42">D2 (6th)</button>
+                            <button class="freq-preset-btn" data-freq="110">A2 (5th)</button>
+                            <button class="freq-preset-btn" data-freq="146.83">D3 (4th)</button>
+                            <button class="freq-preset-btn" data-freq="196">G3 (3rd)</button>
+                            <button class="freq-preset-btn" data-freq="246.94">B3 (2nd)</button>
+                            <button class="freq-preset-btn" data-freq="329.63">E4 (1st)</button>
                         </div>
-                        <p class="noise-specs">Speaker and hearing range tests</p>
+                        <p class="noise-specs">Drop D tuning - 6th string down one tone</p>
                     </div>
 
                     <div class="info-card preset-card">
-                        <h4><i class="ri-piano-line"></i> Piano Notes</h4>
+                        <h4><i class="ri-guitar-line"></i> Bass Guitar - Standard (EADG)</h4>
                         <div class="preset-freq-buttons">
-                            <button class="freq-preset-btn" data-freq="261.63">C4 (Middle C)</button>
+                            <button class="freq-preset-btn" data-freq="41.2">E1 (4th)</button>
+                            <button class="freq-preset-btn" data-freq="55">A1 (3rd)</button>
+                            <button class="freq-preset-btn" data-freq="73.42">D2 (2nd)</button>
+                            <button class="freq-preset-btn" data-freq="98">G2 (1st)</button>
+                        </div>
+                        <p class="noise-specs">4-string bass standard tuning</p>
+                    </div>
+
+                    <div class="info-card preset-card">
+                        <h4><i class="ri-guitar-line"></i> Bass Guitar - 5-String (BEADG)</h4>
+                        <div class="preset-freq-buttons">
+                            <button class="freq-preset-btn" data-freq="30.87">B0 (5th)</button>
+                            <button class="freq-preset-btn" data-freq="41.2">E1 (4th)</button>
+                            <button class="freq-preset-btn" data-freq="55">A1 (3rd)</button>
+                            <button class="freq-preset-btn" data-freq="73.42">D2 (2nd)</button>
+                            <button class="freq-preset-btn" data-freq="98">G2 (1st)</button>
+                        </div>
+                        <p class="noise-specs">5-string bass with low B</p>
+                    </div>
+
+                    <div class="info-card preset-card">
+                        <h4><i class="ri-music-line"></i> Ukulele - Standard (GCEA)</h4>
+                        <div class="preset-freq-buttons">
+                            <button class="freq-preset-btn" data-freq="392">G4 (4th)</button>
+                            <button class="freq-preset-btn" data-freq="261.63">C4 (3rd)</button>
+                            <button class="freq-preset-btn" data-freq="329.63">E4 (2nd)</button>
+                            <button class="freq-preset-btn" data-freq="440">A4 (1st)</button>
+                        </div>
+                        <p class="noise-specs">Soprano/Concert/Tenor ukulele</p>
+                    </div>
+
+                    <div class="info-card preset-card">
+                        <h4><i class="ri-music-line"></i> Violin (GDAE)</h4>
+                        <div class="preset-freq-buttons">
+                            <button class="freq-preset-btn" data-freq="196">G3 (4th)</button>
+                            <button class="freq-preset-btn" data-freq="293.66">D4 (3rd)</button>
+                            <button class="freq-preset-btn" data-freq="440">A4 (2nd)</button>
+                            <button class="freq-preset-btn" data-freq="659.26">E5 (1st)</button>
+                        </div>
+                        <p class="noise-specs">Standard violin tuning in fifths</p>
+                    </div>
+
+                    <div class="info-card preset-card">
+                        <h4><i class="ri-music-line"></i> Viola (CGDA)</h4>
+                        <div class="preset-freq-buttons">
+                            <button class="freq-preset-btn" data-freq="130.81">C3 (4th)</button>
+                            <button class="freq-preset-btn" data-freq="196">G3 (3rd)</button>
+                            <button class="freq-preset-btn" data-freq="293.66">D4 (2nd)</button>
+                            <button class="freq-preset-btn" data-freq="440">A4 (1st)</button>
+                        </div>
+                        <p class="noise-specs">One fifth below violin</p>
+                    </div>
+
+                    <div class="info-card preset-card">
+                        <h4><i class="ri-music-line"></i> Cello (CGDA)</h4>
+                        <div class="preset-freq-buttons">
+                            <button class="freq-preset-btn" data-freq="65.41">C2 (4th)</button>
+                            <button class="freq-preset-btn" data-freq="98">G2 (3rd)</button>
+                            <button class="freq-preset-btn" data-freq="146.83">D3 (2nd)</button>
+                            <button class="freq-preset-btn" data-freq="220">A3 (1st)</button>
+                        </div>
+                        <p class="noise-specs">One octave below viola</p>
+                    </div>
+
+                    <div class="info-card preset-card">
+                        <h4><i class="ri-piano-line"></i> Piano - One Octave (C4-C5)</h4>
+                        <div class="preset-freq-buttons">
+                            <button class="freq-preset-btn" data-freq="261.63">C4</button>
                             <button class="freq-preset-btn" data-freq="293.66">D4</button>
                             <button class="freq-preset-btn" data-freq="329.63">E4</button>
                             <button class="freq-preset-btn" data-freq="349.23">F4</button>
@@ -248,7 +511,37 @@
                             <button class="freq-preset-btn" data-freq="493.88">B4</button>
                             <button class="freq-preset-btn" data-freq="523.25">C5</button>
                         </div>
-                        <p class="noise-specs">One octave from Middle C</p>
+                        <p class="noise-specs">Middle octave of the piano</p>
+                    </div>
+
+                    <div class="info-card preset-card">
+                        <h4><i class="ri-sound-module-line"></i> Audio Test Frequencies</h4>
+                        <div class="preset-freq-buttons">
+                            <button class="freq-preset-btn" data-freq="20">20 Hz</button>
+                            <button class="freq-preset-btn" data-freq="50">50 Hz</button>
+                            <button class="freq-preset-btn" data-freq="100">100 Hz</button>
+                            <button class="freq-preset-btn" data-freq="200">200 Hz</button>
+                            <button class="freq-preset-btn" data-freq="500">500 Hz</button>
+                            <button class="freq-preset-btn" data-freq="1000">1 kHz</button>
+                            <button class="freq-preset-btn" data-freq="2000">2 kHz</button>
+                            <button class="freq-preset-btn" data-freq="5000">5 kHz</button>
+                            <button class="freq-preset-btn" data-freq="10000">10 kHz</button>
+                            <button class="freq-preset-btn" data-freq="15000">15 kHz</button>
+                            <button class="freq-preset-btn" data-freq="20000">20 kHz</button>
+                        </div>
+                        <p class="noise-specs">Standard test tones for speaker and hearing tests</p>
+                    </div>
+
+                    <div class="info-card preset-card">
+                        <h4><i class="ri-phone-line"></i> Telephone & Broadcast Standards</h4>
+                        <div class="preset-freq-buttons">
+                            <button class="freq-preset-btn" data-freq="350">350 Hz (Dial tone)</button>
+                            <button class="freq-preset-btn" data-freq="440">440 Hz (Dial tone)</button>
+                            <button class="freq-preset-btn" data-freq="480">480 Hz (Ringback)</button>
+                            <button class="freq-preset-btn" data-freq="620">620 Hz (Busy)</button>
+                            <button class="freq-preset-btn" data-freq="1000">1 kHz (Test tone)</button>
+                        </div>
+                        <p class="noise-specs">North American telephone signaling tones</p>
                     </div>
                 </div>
             </article>
@@ -257,75 +550,140 @@
         <!-- Educational Content -->
         <section class="content-section" id="about-waves">
             <article class="content-article">
-                <h2>Understanding Waveforms</h2>
-                <p class="intro-text">Different waveforms produce distinct timbres even at the same frequency. This is because each waveform contains a unique combination of harmonics - integer multiples of the fundamental frequency. Understanding these differences is essential for audio synthesis, testing, and acoustics.</p>
+                <h2>The Science of Sound</h2>
+                <p class="intro-text">Understanding sound waves, frequency, and psychoacoustics is fundamental to audio engineering, music, and hearing science. This guide covers the essential principles with references to key research.</p>
 
                 <h3>The Four Basic Waveforms</h3>
                 <div class="info-grid">
                     <div class="info-card">
                         <h4><i class="ri-radio-button-line"></i> Sine Wave</h4>
-                        <p>The purest tone possible, containing only the fundamental frequency with no harmonics. Sine waves are the building blocks of all other sounds - any complex waveform can be decomposed into a series of sine waves (Fourier analysis). They sound smooth and flute-like.</p>
+                        <p>The purest tone possible, containing only the fundamental frequency with no harmonics. Sine waves are the building blocks of all other sounds - any complex waveform can be decomposed into a series of sine waves through Fourier analysis, as demonstrated by Joseph Fourier in 1822.</p>
                         <p class="noise-specs"><strong>Harmonics:</strong> Fundamental only<br><strong>Character:</strong> Pure, smooth, clean<br><strong>Uses:</strong> Tuning, calibration, sub-bass</p>
                     </div>
 
                     <div class="info-card">
                         <h4><i class="ri-checkbox-blank-line"></i> Square Wave</h4>
-                        <p>Contains only odd harmonics (1st, 3rd, 5th, 7th...) at amplitudes of 1/n. This creates a hollow, woody sound reminiscent of vintage synthesizers and clarinet-like tones. Square waves are useful for creating rich, hollow timbres.</p>
+                        <p>Contains only odd harmonics (1st, 3rd, 5th, 7th...) at amplitudes of 1/n. This creates a hollow, woody sound reminiscent of vintage synthesizers and clarinet-like tones. The absence of even harmonics gives it a distinctive hollow character.</p>
                         <p class="noise-specs"><strong>Harmonics:</strong> Odd only (1, 3, 5, 7...)<br><strong>Character:</strong> Hollow, woody, buzzy<br><strong>Uses:</strong> Synthesis, 8-bit sounds, testing</p>
                     </div>
 
                     <div class="info-card">
                         <h4><i class="ri-arrow-right-up-line"></i> Sawtooth Wave</h4>
-                        <p>Contains all harmonics (odd and even) at amplitudes of 1/n. This gives it the richest harmonic content of the basic waveforms, producing a bright, buzzy, brass-like sound. Excellent for subtractive synthesis.</p>
+                        <p>Contains all harmonics (odd and even) at amplitudes of 1/n. This gives it the richest harmonic content of the basic waveforms, producing a bright, buzzy, brass-like sound. Excellent as a starting point for subtractive synthesis.</p>
                         <p class="noise-specs"><strong>Harmonics:</strong> All (1, 2, 3, 4, 5...)<br><strong>Character:</strong> Bright, brassy, rich<br><strong>Uses:</strong> Lead synths, strings, brass</p>
                     </div>
 
                     <div class="info-card">
                         <h4><i class="ri-arrow-up-line"></i> Triangle Wave</h4>
-                        <p>Contains only odd harmonics like square waves, but at amplitudes of 1/n squared. This results in a softer, rounder sound than square waves - somewhere between sine and square. Often used for soft pads and mellow tones.</p>
+                        <p>Contains only odd harmonics like square waves, but at amplitudes of 1/n squared, making the higher harmonics much weaker. This results in a softer, rounder sound - somewhere between sine and square.</p>
                         <p class="noise-specs"><strong>Harmonics:</strong> Odd only (weaker)<br><strong>Character:</strong> Soft, mellow, rounded<br><strong>Uses:</strong> Flutes, soft leads, LFOs</p>
                     </div>
                 </div>
 
-                <h3>Frequency and Pitch</h3>
-                <p>Frequency is measured in Hertz (Hz) - the number of complete wave cycles per second. Human hearing typically ranges from 20 Hz to 20,000 Hz (20 kHz), though this upper limit decreases with age. Musical pitch is directly related to frequency:</p>
+                <h3>Psychoacoustics: How We Perceive Sound</h3>
+                <p>Psychoacoustics is the scientific study of sound perception, bridging physics and psychology. Understanding these principles is essential for audio engineering and music production.</p>
 
+                <h4>Equal Loudness Contours (Fletcher-Munson Curves)</h4>
+                <p>Human hearing is not equally sensitive across all frequencies. Fletcher and Munson's 1933 research, later refined by Robinson and Dadson (1956) and standardized as ISO 226:2003, showed that:</p>
                 <ul class="feature-list">
-                    <li><strong>A4 = 440 Hz:</strong> The international standard for concert pitch, used to tune orchestras worldwide</li>
-                    <li><strong>Octave relationship:</strong> Doubling the frequency raises the pitch by one octave (A4 = 440 Hz, A5 = 880 Hz)</li>
-                    <li><strong>Equal temperament:</strong> Each semitone is a ratio of 2^(1/12) = 1.0595, allowing modulation between keys</li>
-                    <li><strong>Frequency range:</strong> Bass notes (20-250 Hz), midrange (250-4000 Hz), treble (4000-20000 Hz)</li>
-                    <li><strong>Fundamental vs harmonics:</strong> The lowest frequency determines pitch; harmonics determine timbre</li>
+                    <li><strong>Peak sensitivity:</strong> Human hearing is most sensitive between 2-5 kHz, corresponding to speech frequencies and the ear canal's resonance</li>
+                    <li><strong>Low frequency roll-off:</strong> We need significantly more sound pressure to perceive low frequencies as equally loud</li>
+                    <li><strong>Volume-dependent perception:</strong> The curves flatten at higher listening levels, which is why loud music sounds more "full"</li>
+                    <li><strong>Practical application:</strong> This is why the "loudness" button on stereos boosts bass and treble at low volumes</li>
                 </ul>
 
-                <h3>Psychoacoustics of Dual Tones</h3>
-                <p>When two tones play simultaneously, interesting perceptual phenomena occur:</p>
-
+                <h4>Critical Bands and Masking</h4>
+                <p>The cochlea divides sound into approximately 24 critical bands (Bark scale). This has important implications:</p>
                 <ul class="feature-list">
-                    <li><strong>Beating:</strong> Two close frequencies create amplitude fluctuations at the difference frequency. At 440 Hz and 442 Hz, you hear 2 "beats" per second</li>
-                    <li><strong>Consonance/Dissonance:</strong> Simple frequency ratios (2:1, 3:2, 4:3) sound consonant; complex ratios create tension</li>
-                    <li><strong>Combination tones:</strong> At high volumes, you may perceive phantom tones at the sum and difference frequencies</li>
-                    <li><strong>Binaural beats:</strong> Different frequencies in each ear can create perceived pulsing (requires headphones)</li>
-                    <li><strong>Musical intervals:</strong> Perfect fifth (3:2 ratio), perfect fourth (4:3), major third (5:4) are most consonant</li>
+                    <li><strong>Frequency masking:</strong> A louder tone can mask quieter tones within the same critical band (about 1/3 octave wide)</li>
+                    <li><strong>Temporal masking:</strong> Sounds can be masked by preceding sounds (backward masking) or following sounds (forward masking)</li>
+                    <li><strong>MP3 compression:</strong> Psychoacoustic models exploit masking to remove inaudible information</li>
                 </ul>
 
-                <h3>Practical Applications</h3>
+                <h4>Binaural Phenomena</h4>
                 <ul class="feature-list">
-                    <li><strong>Instrument Tuning:</strong> Use sine waves at reference frequencies to tune guitars, pianos, and other instruments</li>
-                    <li><strong>Speaker Testing:</strong> Sweep through frequencies to identify speaker response and room acoustics</li>
-                    <li><strong>Hearing Tests:</strong> Test your hearing range, though proper audiometry requires calibrated equipment</li>
-                    <li><strong>Sound Design:</strong> Understanding waveforms is fundamental to synthesis and audio production</li>
-                    <li><strong>Tinnitus Frequency Matching:</strong> Identify the frequency of tinnitus for masking or habituation therapy</li>
-                    <li><strong>Physics Education:</strong> Demonstrate wave properties, harmonics, and acoustic principles</li>
+                    <li><strong>Binaural beats:</strong> When slightly different frequencies are presented to each ear, the brain perceives a "beat" at the difference frequency. First described by Heinrich Wilhelm Dove in 1839</li>
+                    <li><strong>Sound localization:</strong> We locate sounds using interaural time differences (ITD) for low frequencies and interaural level differences (ILD) for high frequencies</li>
+                    <li><strong>Precedence effect:</strong> The first-arriving sound determines perceived direction, with reflections contributing to spaciousness</li>
                 </ul>
 
-                <h3>Safe Listening</h3>
-                <p>Pure tones can be more fatiguing than complex sounds. Follow these guidelines:</p>
+                <h3>Frequency and Musical Pitch</h3>
+                <p>The relationship between frequency and musical pitch is fundamental to music theory and acoustic science.</p>
+
+                <h4>The Concert Pitch Standard</h4>
                 <ul class="feature-list">
-                    <li><strong>Start quiet:</strong> Always begin at low volume and increase gradually</li>
-                    <li><strong>Avoid extremes:</strong> Very low (below 40 Hz) or high (above 15 kHz) frequencies can be uncomfortable at high volumes</li>
-                    <li><strong>Take breaks:</strong> Extended exposure to pure tones can cause temporary hearing fatigue</li>
-                    <li><strong>Use quality equipment:</strong> Poor speakers can distort, especially at frequency extremes</li>
+                    <li><strong>A4 = 440 Hz:</strong> Adopted as the international standard (ISO 16) in 1955, though it was proposed by the Stuttgart Conference in 1834</li>
+                    <li><strong>Historical variation:</strong> Concert pitch has varied from about 400 Hz to 460 Hz throughout history. Baroque pitch was typically around A=415 Hz</li>
+                    <li><strong>Modern variations:</strong> Many European orchestras tune to A=442-443 Hz for a slightly brighter sound</li>
+                    <li><strong>A=432 Hz:</strong> Some claim this tuning is more "natural," though scientific evidence for special properties is lacking</li>
+                </ul>
+
+                <h4>Equal Temperament</h4>
+                <p>The modern Western music system divides the octave into 12 equal semitones:</p>
+                <ul class="feature-list">
+                    <li><strong>Semitone ratio:</strong> Each semitone is the 12th root of 2 (approximately 1.0595), so 12 semitones exactly double the frequency</li>
+                    <li><strong>Trade-offs:</strong> Equal temperament slightly detunes all intervals except octaves, but allows free modulation between keys</li>
+                    <li><strong>Just intonation:</strong> Uses pure frequency ratios (3:2 for fifths, 5:4 for major thirds) but only works well in one key</li>
+                    <li><strong>Cents:</strong> Each semitone is divided into 100 cents, so an octave has 1200 cents. One cent = frequency ratio of 2^(1/1200)</li>
+                </ul>
+
+                <h4>The Harmonic Series</h4>
+                <p>When a string or air column vibrates, it produces not just the fundamental but a series of harmonics at integer multiples:</p>
+                <ul class="feature-list">
+                    <li><strong>1st harmonic (fundamental):</strong> The perceived pitch (e.g., 100 Hz)</li>
+                    <li><strong>2nd harmonic:</strong> One octave above (200 Hz)</li>
+                    <li><strong>3rd harmonic:</strong> Octave + perfect fifth (300 Hz)</li>
+                    <li><strong>4th harmonic:</strong> Two octaves (400 Hz)</li>
+                    <li><strong>5th harmonic:</strong> Two octaves + major third (500 Hz)</li>
+                    <li><strong>Musical intervals:</strong> The ratios between adjacent harmonics define consonant intervals: 2:1 (octave), 3:2 (fifth), 4:3 (fourth), 5:4 (major third)</li>
+                </ul>
+
+                <h3>Hearing Science</h3>
+
+                <h4>The Human Auditory System</h4>
+                <p>Sound enters the ear canal, causing the eardrum to vibrate. These vibrations are transmitted through the ossicles (malleus, incus, stapes) to the cochlea, where hair cells convert mechanical motion into neural signals.</p>
+
+                <h4>Frequency Range and Aging</h4>
+                <ul class="feature-list">
+                    <li><strong>Young adults:</strong> Typically hear from 20 Hz to 20,000 Hz, though sensitivity varies</li>
+                    <li><strong>Presbycusis:</strong> Age-related hearing loss, primarily affecting high frequencies. By age 50, many people have lost sensitivity above 12-14 kHz</li>
+                    <li><strong>Noise-induced loss:</strong> Exposure to loud sounds damages hair cells, often showing as a "notch" around 4 kHz (noise notch)</li>
+                    <li><strong>The 4 kHz notch:</strong> The ear canal resonates around 3-4 kHz, amplifying sounds in this range and making this region vulnerable to damage</li>
+                </ul>
+
+                <h4>Safe Listening Guidelines</h4>
+                <p>Based on NIOSH and WHO recommendations:</p>
+                <ul class="feature-list">
+                    <li><strong>85 dB:</strong> Safe for 8 hours of exposure (typical city traffic noise)</li>
+                    <li><strong>88 dB:</strong> Safe for 4 hours (every 3 dB doubles the risk)</li>
+                    <li><strong>94 dB:</strong> Safe for only 1 hour (lawn mower level)</li>
+                    <li><strong>100 dB:</strong> Safe for only 15 minutes (concert level)</li>
+                    <li><strong>Headphone use:</strong> Follow the 60/60 rule - no more than 60% volume for no more than 60 minutes at a time</li>
+                </ul>
+
+                <h3>Applications in Audio Engineering</h3>
+
+                <h4>Speaker and Room Testing</h4>
+                <ul class="feature-list">
+                    <li><strong>Frequency sweeps:</strong> Reveal resonances, dead spots, and frequency response issues</li>
+                    <li><strong>Standing waves:</strong> Room modes occur at frequencies where the wavelength fits exactly into room dimensions</li>
+                    <li><strong>1 kHz test tone:</strong> The standard reference frequency for level calibration (0 VU = +4 dBu)</li>
+                </ul>
+
+                <h4>Tinnitus and Sound Therapy</h4>
+                <ul class="feature-list">
+                    <li><strong>Frequency matching:</strong> Identifying the frequency of tinnitus can help target masking sounds and notched music therapy</li>
+                    <li><strong>Notched music therapy:</strong> Research suggests that listening to music with the tinnitus frequency removed may provide relief</li>
+                    <li><strong>Masking:</strong> Playing sounds at or near the tinnitus frequency can provide temporary relief</li>
+                </ul>
+
+                <h3>References and Further Reading</h3>
+                <ul class="feature-list">
+                    <li><strong>Fletcher, H. & Munson, W.A. (1933).</strong> "Loudness, Its Definition, Measurement and Calculation." Bell System Technical Journal, 12(4), 377-430.</li>
+                    <li><strong>ISO 226:2003.</strong> Acoustics - Normal equal-loudness-level contours.</li>
+                    <li><strong>Moore, B.C.J. (2012).</strong> An Introduction to the Psychology of Hearing (6th ed.). Brill.</li>
+                    <li><strong>Rossing, T.D., Moore, F.R., & Wheeler, P.A. (2002).</strong> The Science of Sound (3rd ed.). Addison-Wesley.</li>
+                    <li><strong>NIOSH (1998).</strong> Criteria for a Recommended Standard: Occupational Noise Exposure. Publication No. 98-126.</li>
                 </ul>
             </article>
         </section>
@@ -334,12 +692,13 @@
             <div class="footer-content">
                 <div class="footer-brand">
                     <span class="footer-logo">Tone Generator</span>
-                    <p>Free online tone generator with sine, square, sawtooth, and triangle waveforms. Perfect for tuning, testing, and audio education.</p>
+                    <p>Free online tone generator with sine, square, sawtooth, and triangle waveforms. Features frequency sweep, hearing test mode, and comprehensive instrument tuning presets.</p>
                 </div>
                 <div class="footer-links">
                     <h4>Quick Links</h4>
                     <a href="#generator">Generator</a>
-                    <a href="#dual-tone">Dual Tone</a>
+                    <a href="#sweep">Frequency Sweep</a>
+                    <a href="#hearing-test">Hearing Test</a>
                     <a href="#tuning-presets">Tuning Presets</a>
                     <a href="#about-waves">The Science</a>
                 </div>
@@ -347,6 +706,7 @@
                     <h4>Related Tools</h4>
                     <a href="https://noisegenerator.com" target="_blank">Noise Generator</a>
                     <a href="https://sirengenerator.com" target="_blank">Siren Generator</a>
+                    <a href="https://metronome.com" target="_blank">Metronome</a>
                 </div>
             </div>
             <div class="footer-bottom">

@@ -1,6 +1,7 @@
 /**
  * Tone Generator - Web Audio API Implementation
  * Generates pure tones with sine, square, sawtooth, and triangle waveforms
+ * Features: Frequency sweep, hearing test mode, dual oscillator
  */
 
 class ToneGenerator {
@@ -17,6 +18,20 @@ class ToneGenerator {
         this.oscillator2 = null;
         this.gain2 = null;
         this.dualToneEnabled = false;
+
+        // Sweep mode
+        this.sweepOscillator = null;
+        this.sweepGain = null;
+        this.isSweeping = false;
+        this.sweepAnimationId = null;
+        this.sweepStartTime = null;
+
+        // Hearing test mode
+        this.hearingTestOscillator = null;
+        this.hearingTestGain = null;
+        this.hearingTestPanner = null;
+        this.currentEar = 'both';
+        this.hearingResults = {};
 
         this.isPlaying = false;
 
@@ -74,6 +89,18 @@ class ToneGenerator {
         this.gain2 = this.audioContext.createGain();
         this.gain2.gain.value = 0;
         this.gain2.connect(this.masterGain);
+
+        // Create sweep gain
+        this.sweepGain = this.audioContext.createGain();
+        this.sweepGain.gain.value = 0;
+        this.sweepGain.connect(this.masterGain);
+
+        // Create hearing test nodes
+        this.hearingTestGain = this.audioContext.createGain();
+        this.hearingTestGain.gain.value = 0;
+        this.hearingTestPanner = this.audioContext.createStereoPanner();
+        this.hearingTestGain.connect(this.hearingTestPanner);
+        this.hearingTestPanner.connect(this.masterGain);
     }
 
     createOscillator(frequency, gainNode) {
@@ -255,6 +282,244 @@ class ToneGenerator {
         });
     }
 
+    // ==================== FREQUENCY SWEEP ====================
+
+    startSweep() {
+        this.initAudioContext();
+
+        if (this.audioContext.state === 'suspended') {
+            this.audioContext.resume();
+        }
+
+        const startFreq = parseFloat(document.getElementById('sweepStart').value) || 20;
+        const endFreq = parseFloat(document.getElementById('sweepEnd').value) || 20000;
+        const duration = parseFloat(document.getElementById('sweepDuration').value) || 10;
+        const sweepType = document.getElementById('sweepType').value;
+        const loop = document.getElementById('sweepLoop').checked;
+
+        // Stop any existing sweep
+        this.stopSweep();
+
+        // Create sweep oscillator
+        this.sweepOscillator = this.audioContext.createOscillator();
+        this.sweepOscillator.type = this.settings.waveform;
+        this.sweepOscillator.connect(this.sweepGain);
+        this.sweepOscillator.start();
+
+        // Fade in
+        this.sweepGain.gain.setValueAtTime(0, this.audioContext.currentTime);
+        this.sweepGain.gain.linearRampToValueAtTime(1, this.audioContext.currentTime + 0.05);
+
+        this.isSweeping = true;
+        this.sweepStartTime = this.audioContext.currentTime;
+
+        const sweepDisplay = document.getElementById('sweepCurrentFreq');
+        const sweepButton = document.getElementById('sweepButton');
+        sweepButton.innerHTML = '<i class="ri-stop-fill"></i><span>Stop Sweep</span>';
+        sweepButton.classList.add('playing');
+
+        // Sweep function
+        const doSweep = () => {
+            if (!this.isSweeping) return;
+
+            const elapsed = this.audioContext.currentTime - this.sweepStartTime;
+            const progress = Math.min(elapsed / duration, 1);
+
+            let currentFreq;
+            if (sweepType === 'logarithmic') {
+                // Logarithmic sweep - equal time per octave
+                const logStart = Math.log(startFreq);
+                const logEnd = Math.log(endFreq);
+                currentFreq = Math.exp(logStart + progress * (logEnd - logStart));
+            } else {
+                // Linear sweep
+                currentFreq = startFreq + progress * (endFreq - startFreq);
+            }
+
+            this.sweepOscillator.frequency.setValueAtTime(currentFreq, this.audioContext.currentTime);
+            sweepDisplay.textContent = Math.round(currentFreq) + ' Hz';
+
+            if (progress >= 1) {
+                if (loop) {
+                    this.sweepStartTime = this.audioContext.currentTime;
+                    this.sweepAnimationId = requestAnimationFrame(doSweep);
+                } else {
+                    this.stopSweep();
+                }
+            } else {
+                this.sweepAnimationId = requestAnimationFrame(doSweep);
+            }
+        };
+
+        this.sweepAnimationId = requestAnimationFrame(doSweep);
+        this.startVisualization();
+    }
+
+    stopSweep() {
+        this.isSweeping = false;
+
+        if (this.sweepAnimationId) {
+            cancelAnimationFrame(this.sweepAnimationId);
+            this.sweepAnimationId = null;
+        }
+
+        if (this.sweepOscillator) {
+            this.sweepGain.gain.setValueAtTime(this.sweepGain.gain.value, this.audioContext.currentTime);
+            this.sweepGain.gain.linearRampToValueAtTime(0, this.audioContext.currentTime + 0.05);
+
+            setTimeout(() => {
+                if (this.sweepOscillator) {
+                    this.sweepOscillator.stop();
+                    this.sweepOscillator.disconnect();
+                    this.sweepOscillator = null;
+                }
+            }, 100);
+        }
+
+        const sweepButton = document.getElementById('sweepButton');
+        sweepButton.innerHTML = '<i class="ri-play-fill"></i><span>Start Sweep</span>';
+        sweepButton.classList.remove('playing');
+
+        document.getElementById('sweepCurrentFreq').textContent = '--';
+        this.stopVisualization();
+    }
+
+    toggleSweep() {
+        if (this.isSweeping) {
+            this.stopSweep();
+        } else {
+            this.startSweep();
+        }
+    }
+
+    applySweepPreset(start, end, duration) {
+        document.getElementById('sweepStart').value = start;
+        document.getElementById('sweepEnd').value = end;
+        document.getElementById('sweepDuration').value = duration;
+    }
+
+    // ==================== HEARING TEST ====================
+
+    setHearingTestEar(ear) {
+        this.currentEar = ear;
+
+        // Update panner
+        if (this.hearingTestPanner) {
+            switch (ear) {
+                case 'left':
+                    this.hearingTestPanner.pan.value = -1;
+                    break;
+                case 'right':
+                    this.hearingTestPanner.pan.value = 1;
+                    break;
+                default:
+                    this.hearingTestPanner.pan.value = 0;
+            }
+        }
+
+        // Update buttons
+        document.querySelectorAll('.ear-btn').forEach(btn => {
+            btn.classList.remove('active');
+            if (btn.dataset.ear === ear) {
+                btn.classList.add('active');
+            }
+        });
+    }
+
+    playHearingTestTone(freq) {
+        this.initAudioContext();
+
+        if (this.audioContext.state === 'suspended') {
+            this.audioContext.resume();
+        }
+
+        // Stop any existing test tone
+        this.stopHearingTestTone();
+
+        // Set panner position
+        switch (this.currentEar) {
+            case 'left':
+                this.hearingTestPanner.pan.value = -1;
+                break;
+            case 'right':
+                this.hearingTestPanner.pan.value = 1;
+                break;
+            default:
+                this.hearingTestPanner.pan.value = 0;
+        }
+
+        // Create oscillator
+        this.hearingTestOscillator = this.audioContext.createOscillator();
+        this.hearingTestOscillator.type = 'sine'; // Always use sine for hearing test
+        this.hearingTestOscillator.frequency.value = freq;
+        this.hearingTestOscillator.connect(this.hearingTestGain);
+        this.hearingTestOscillator.start();
+
+        // Fade in
+        this.hearingTestGain.gain.setValueAtTime(0, this.audioContext.currentTime);
+        this.hearingTestGain.gain.linearRampToValueAtTime(0.5, this.audioContext.currentTime + 0.1);
+
+        // Auto-stop after 2 seconds
+        setTimeout(() => {
+            this.stopHearingTestTone();
+        }, 2000);
+
+        // Update button state
+        document.querySelectorAll('.hearing-freq-btn').forEach(btn => {
+            btn.classList.remove('active');
+            if (parseInt(btn.dataset.freq) === freq) {
+                btn.classList.add('active');
+            }
+        });
+
+        this.startVisualization();
+    }
+
+    stopHearingTestTone() {
+        if (this.hearingTestOscillator) {
+            this.hearingTestGain.gain.setValueAtTime(this.hearingTestGain.gain.value, this.audioContext.currentTime);
+            this.hearingTestGain.gain.linearRampToValueAtTime(0, this.audioContext.currentTime + 0.05);
+
+            setTimeout(() => {
+                if (this.hearingTestOscillator) {
+                    this.hearingTestOscillator.stop();
+                    this.hearingTestOscillator.disconnect();
+                    this.hearingTestOscillator = null;
+                }
+            }, 100);
+        }
+
+        document.querySelectorAll('.hearing-freq-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+    }
+
+    recordHearingResult(freq, canHear) {
+        const key = `${this.currentEar}_${freq}`;
+        this.hearingResults[key] = canHear;
+
+        // Update UI
+        const item = document.querySelector(`.hearing-freq-item[data-freq="${freq}"]`);
+        if (item) {
+            const yesBtn = item.querySelector('.result-btn.yes');
+            const noBtn = item.querySelector('.result-btn.no');
+
+            yesBtn.classList.remove('selected');
+            noBtn.classList.remove('selected');
+
+            if (canHear) {
+                yesBtn.classList.add('selected');
+            } else {
+                noBtn.classList.add('selected');
+            }
+        }
+
+        // Stop the tone after recording result
+        this.stopHearingTestTone();
+    }
+
+    // ==================== HELPER FUNCTIONS ====================
+
     // Helper: frequency to note name
     frequencyToNote(freq) {
         // A4 = 440 Hz, MIDI note 69
@@ -342,7 +607,8 @@ class ToneGenerator {
         }
     }
 
-    // Visualization
+    // ==================== VISUALIZATION ====================
+
     setupCanvas() {
         this.canvas = document.getElementById('waveformCanvas');
         if (!this.canvas) return;
@@ -370,7 +636,7 @@ class ToneGenerator {
 
         this.canvasCtx.scale(dpr, dpr);
 
-        if (!this.isPlaying) {
+        if (!this.isPlaying && !this.isSweeping) {
             this.drawStaticWaveform();
         }
     }
@@ -438,7 +704,7 @@ class ToneGenerator {
         if (!this.analyser) return;
 
         const draw = () => {
-            if (!this.isPlaying) return;
+            if (!this.isPlaying && !this.isSweeping && !this.hearingTestOscillator) return;
 
             this.animationId = requestAnimationFrame(draw);
 
@@ -486,6 +752,8 @@ class ToneGenerator {
         }
         this.drawStaticWaveform();
     }
+
+    // ==================== EVENT LISTENERS ====================
 
     setupEventListeners() {
         // Play button
@@ -595,7 +863,7 @@ class ToneGenerator {
         });
 
         // Frequency preset buttons
-        document.querySelectorAll('.freq-preset-btn').forEach(btn => {
+        document.querySelectorAll('.freq-preset-btn:not(.sweep-preset)').forEach(btn => {
             btn.addEventListener('click', () => {
                 const freq = parseFloat(btn.dataset.freq);
                 this.setFrequency(freq, 1);
@@ -605,9 +873,53 @@ class ToneGenerator {
             });
         });
 
-        // Keyboard shortcuts
+        // ==================== SWEEP EVENT LISTENERS ====================
+
+        // Sweep button
+        document.getElementById('sweepButton')?.addEventListener('click', () => {
+            this.toggleSweep();
+        });
+
+        // Sweep presets
+        document.querySelectorAll('.sweep-preset').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const start = parseFloat(btn.dataset.start);
+                const end = parseFloat(btn.dataset.end);
+                const duration = parseFloat(btn.dataset.duration);
+                this.applySweepPreset(start, end, duration);
+            });
+        });
+
+        // ==================== HEARING TEST EVENT LISTENERS ====================
+
+        // Ear selection buttons
+        document.querySelectorAll('.ear-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                this.setHearingTestEar(btn.dataset.ear);
+            });
+        });
+
+        // Hearing test frequency buttons
+        document.querySelectorAll('.hearing-freq-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const freq = parseInt(btn.dataset.freq);
+                this.playHearingTestTone(freq);
+            });
+        });
+
+        // Hearing test result buttons
+        document.querySelectorAll('.result-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const freq = parseInt(btn.dataset.freq);
+                const canHear = btn.dataset.result === 'yes';
+                this.recordHearingResult(freq, canHear);
+            });
+        });
+
+        // ==================== KEYBOARD SHORTCUTS ====================
+
         document.addEventListener('keydown', (e) => {
-            if (e.target.tagName === 'INPUT') return;
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT') return;
 
             if (e.code === 'Space') {
                 e.preventDefault();

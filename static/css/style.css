@@ -939,4 +939,372 @@ body {
     .frequency-row input[type="number"] {
         width: 100%;
     }
+
+    .sweep-row {
+        flex-direction: column;
+    }
+
+    .hearing-freq-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ==================== FREQUENCY SWEEP STYLES ==================== */
+
+.sweep-section {
+    background: var(--surface);
+}
+
+.sweep-section h2 {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.sweep-section h2 i {
+    color: var(--primary);
+}
+
+.sweep-controls {
+    background: var(--surface-raised);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.sweep-row {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.sweep-input-group {
+    flex: 1;
+}
+
+.sweep-input-group label {
+    display: block;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.sweep-input-group input[type="number"],
+.sweep-input-group select {
+    width: 100%;
+    padding: 0.75rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    font-size: 0.9375rem;
+    font-weight: 500;
+}
+
+.sweep-input-group input[type="number"]:focus,
+.sweep-input-group select:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+.sweep-checkbox {
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 0.5rem;
+}
+
+.sweep-display {
+    text-align: center;
+    padding: 1rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.sweep-freq-label {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.sweep-freq-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-left: 0.5rem;
+}
+
+.sweep-btn.playing {
+    background: #ef4444;
+    box-shadow: 0 4px 14px rgba(239, 68, 68, 0.4);
+}
+
+.sweep-presets {
+    margin-top: 1.5rem;
+}
+
+.sweep-presets h4 {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 0.75rem;
+}
+
+/* ==================== HEARING TEST STYLES ==================== */
+
+.hearing-section {
+    background: var(--surface);
+}
+
+.hearing-section h2 {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.hearing-section h2 i {
+    color: var(--primary);
+}
+
+.disclaimer-box {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+}
+
+.disclaimer-box i {
+    color: #ef4444;
+    font-size: 1.25rem;
+    flex-shrink: 0;
+    margin-top: 0.125rem;
+}
+
+.disclaimer-box p {
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+.disclaimer-box strong {
+    color: #ef4444;
+}
+
+.hearing-test-controls {
+    background: var(--surface-raised);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.hearing-test-row {
+    margin-bottom: 1.5rem;
+}
+
+.ear-select label {
+    display: block;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-bottom: 0.75rem;
+}
+
+.ear-buttons {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.ear-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.ear-btn:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.ear-btn.active {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: #000;
+}
+
+.hearing-frequencies {
+    margin-bottom: 1.5rem;
+}
+
+.hearing-frequencies h4 {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+}
+
+.test-instruction {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+}
+
+.hearing-freq-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.75rem;
+}
+
+.hearing-freq-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.hearing-freq-btn {
+    padding: 0.75rem 0.5rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+}
+
+.hearing-freq-btn:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.hearing-freq-btn.active {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: #000;
+    animation: pulse-glow 1s ease-in-out infinite;
+}
+
+.hearing-result {
+    display: flex;
+    gap: 0.25rem;
+}
+
+.result-btn {
+    flex: 1;
+    padding: 0.5rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.result-btn:hover {
+    border-color: var(--text-secondary);
+    color: var(--text-secondary);
+}
+
+.result-btn.yes:hover,
+.result-btn.yes.selected {
+    background: rgba(16, 185, 129, 0.2);
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.result-btn.no:hover,
+.result-btn.no.selected {
+    background: rgba(239, 68, 68, 0.2);
+    border-color: #ef4444;
+    color: #ef4444;
+}
+
+.hearing-age-reference {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.25rem;
+    margin-top: 1rem;
+}
+
+.hearing-age-reference h4 {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+}
+
+.age-note {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    margin-bottom: 0.75rem;
+}
+
+.age-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.age-list li {
+    padding: 0.5rem 0;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--border);
+}
+
+.age-list li:last-child {
+    border-bottom: none;
+}
+
+.age-list li strong {
+    color: var(--text);
+}
+
+/* ==================== ADDITIONAL RESPONSIVE STYLES ==================== */
+
+@media (max-width: 768px) {
+    .mini-nav {
+        flex-wrap: wrap;
+    }
+
+    .nav-link {
+        flex: 1 1 auto;
+        min-width: 50%;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .hearing-freq-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .ear-buttons {
+        flex-wrap: wrap;
+    }
+
+    .ear-btn {
+        flex: 1;
+        justify-content: center;
+    }
 }
