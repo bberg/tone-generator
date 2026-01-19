@@ -1,0 +1,314 @@
+{% extends "base.html" %}
+
+{% block title %}The Science of Tones & Pitch Perception - Psychoacoustics Research | ToneSynth{% endblock %}
+
+{% block description %}Explore the neuroscience and psychoacoustics of pitch perception. Learn about tonotopic organization, equal loudness contours, critical bandwidth, and auditory scene analysis.{% endblock %}
+
+{% block meta_extra %}
+<meta property="og:title" content="The Science of Tones & Pitch Perception">
+<meta property="og:description" content="Peer-reviewed research on pitch perception, equal loudness contours, critical bandwidth, and how the brain processes musical tones.">
+<meta property="og:type" content="article">
+<link rel="canonical" href="https://tonesynth.com/science">
+{% endblock %}
+
+{% block tagline %}The neuroscience and psychoacoustics of pitch perception{% endblock %}
+
+{% block content %}
+<div class="research-hero">
+    <h1>The Science of Tones & Pitch Perception</h1>
+    <p class="subtitle">How does the brain transform air pressure fluctuations into the rich experience of musical pitch? A deep dive into the neuroscience, psychoacoustics, and cognitive science behind tone perception.</p>
+</div>
+
+<div class="research-content">
+    <!-- Tonotopic Organization Section -->
+    <section class="research-section">
+        <h2>Tonotopic Organization</h2>
+
+        <p>The auditory system maintains a systematic spatial representation of frequency throughout its entire pathway, from the cochlea to the auditory cortex. This organizational principle, called tonotopy, means that different frequencies activate different locations in neural tissue - effectively creating a "map" of pitch in the brain.</p>
+
+        <h3>From Cochlea to Cortex</h3>
+        <p>The cochlea, a spiral-shaped organ in the inner ear, performs the initial frequency analysis. High frequencies cause maximum displacement near the base (closest to the middle ear), while low frequencies resonate near the apex. This spatial separation is preserved as signals travel through the auditory nerve, brainstem nuclei, thalamus, and finally to the auditory cortex.</p>
+
+        <p><strong>Formisano et al. (2003)</strong> used high-resolution functional MRI to demonstrate that human primary auditory cortex (Heschl's gyrus) contains multiple tonotopic maps arranged in mirror-image fashion. Their research showed that the frequency gradient runs approximately along the medial-lateral axis, with low frequencies represented laterally and high frequencies medially.</p>
+
+        <div class="key-findings">
+            <h4><i class="ri-lightbulb-line"></i> Key Research Findings</h4>
+            <ul>
+                <li>The cochlea separates frequencies with approximately 1/3 octave resolution per millimeter</li>
+                <li>Primary auditory cortex contains 2-3 mirror-image tonotopic maps</li>
+                <li>Frequency representation is logarithmic - each octave occupies roughly equal cortical distance</li>
+                <li>Training and experience can modify tonotopic organization (cortical plasticity)</li>
+            </ul>
+        </div>
+
+        <h3>Clinical Implications</h3>
+        <p>Tonotopic organization underlies the design of cochlear implants, which stimulate different regions of the cochlea to recreate frequency perception. Understanding these maps also helps explain why damage to specific regions of the auditory system produces selective frequency-specific hearing loss.</p>
+    </section>
+
+    <!-- Pitch Perception Section -->
+    <section class="research-section">
+        <h2>Pitch Perception</h2>
+
+        <h3>The Missing Fundamental Phenomenon</h3>
+        <p>One of the most fascinating aspects of pitch perception is that we can perceive the pitch of a complex tone even when its fundamental frequency is absent. This "missing fundamental" or "residue pitch" phenomenon reveals that pitch is not simply the detection of the lowest frequency component, but rather a computational process that infers periodicity from harmonic relationships.</p>
+
+        <p><strong>de Cheveigne (2005)</strong> provided a comprehensive review of pitch perception theories, distinguishing between "place" theories (based on tonotopic activation patterns) and "temporal" theories (based on neural timing). Modern understanding suggests both mechanisms contribute, with temporal coding dominant for frequencies below about 4-5 kHz.</p>
+
+        <div class="info-grid">
+            <div class="info-card">
+                <h4><i class="ri-frequency-line"></i> Place Theory</h4>
+                <p>Pitch is extracted from the pattern of which locations along the basilar membrane are activated. Different frequencies activate different places, and the brain reads this "place code" to determine pitch.</p>
+            </div>
+            <div class="info-card">
+                <h4><i class="ri-time-line"></i> Temporal Theory</h4>
+                <p>Pitch is extracted from the timing of neural firing patterns. Neurons phase-lock to the waveform, firing at particular phases of the cycle. The period between spike clusters encodes frequency.</p>
+            </div>
+            <div class="info-card">
+                <h4><i class="ri-harmony-line"></i> Pattern Recognition</h4>
+                <p>The brain recognizes harmonic patterns and infers the fundamental. When we hear 400, 600, 800 Hz together, we perceive a pitch of 200 Hz (the implied fundamental), even though 200 Hz is absent.</p>
+            </div>
+        </div>
+
+        <h3>Pitch Discrimination Thresholds</h3>
+        <p>Human frequency discrimination is remarkably acute. Under optimal conditions, trained listeners can detect frequency differences as small as 0.2% (about 3 cents) for pure tones in the 500-2000 Hz range. This corresponds to detecting a 1 Hz difference at 500 Hz.</p>
+
+        <table class="research-table">
+            <thead>
+                <tr>
+                    <th>Frequency Range</th>
+                    <th>Typical JND</th>
+                    <th>Musical Context</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>100-500 Hz</td>
+                    <td>1-3 Hz (0.5-1%)</td>
+                    <td>Bass register - slightly less acute</td>
+                </tr>
+                <tr>
+                    <td>500-2000 Hz</td>
+                    <td>1-2 Hz (0.2-0.3%)</td>
+                    <td>Speech range - most acute discrimination</td>
+                </tr>
+                <tr>
+                    <td>2000-8000 Hz</td>
+                    <td>3-10 Hz (0.3-0.5%)</td>
+                    <td>Upper register - still quite acute</td>
+                </tr>
+                <tr>
+                    <td>Above 8000 Hz</td>
+                    <td>Progressively worse</td>
+                    <td>Pitch perception becomes unreliable</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Equal Loudness Contours Section -->
+    <section class="research-section">
+        <h2>Equal Loudness Contours</h2>
+
+        <h3>Fletcher-Munson Curves and ISO 226:2003</h3>
+        <p>Human hearing sensitivity varies dramatically across the frequency spectrum. The original equal loudness contours were measured by Fletcher and Munson in 1933, establishing that we perceive different frequencies as equally loud only when their physical intensities differ substantially. These curves were refined by Robinson and Dadson (1956) and standardized internationally as <strong>ISO 226:2003</strong>.</p>
+
+        <p>The current ISO standard reflects measurements from multiple laboratories across different countries, providing more accurate contours than earlier versions. Key characteristics include:</p>
+
+        <ul class="feature-list">
+            <li><strong>Peak sensitivity at 3-4 kHz:</strong> The ear canal resonates at approximately 2.5-3 kHz, amplifying sounds by 10-15 dB in this region. Combined with middle ear transfer function, peak sensitivity occurs around 3-4 kHz.</li>
+            <li><strong>Steep low-frequency rolloff:</strong> At 20 Hz, sounds must be approximately 70 dB more intense than at 1 kHz to be perceived as equally loud. This is why subwoofers require enormous power.</li>
+            <li><strong>Level-dependent shape:</strong> The contours flatten at higher listening levels. At 90 phons, frequency sensitivity is nearly flat across the audible range. This explains why music sounds "fuller" when played loud.</li>
+            <li><strong>Practical applications:</strong> A-weighting in sound level meters approximates the 40-phon curve. Loudness compensation circuits in audio equipment boost bass and treble at low volumes.</li>
+        </ul>
+
+        <div class="key-findings">
+            <h4><i class="ri-volume-up-line"></i> Why This Matters for Tone Generation</h4>
+            <ul>
+                <li>A 100 Hz tone at 60 dB SPL sounds much quieter than a 1 kHz tone at 60 dB</li>
+                <li>When testing speakers with sweeps, apparent loudness changes dramatically across frequency</li>
+                <li>Headphone frequency response interacts with equal loudness curves</li>
+                <li>Hearing tests must account for frequency-dependent sensitivity</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Auditory Scene Analysis Section -->
+    <section class="research-section">
+        <h2>Auditory Scene Analysis</h2>
+
+        <h3>Separating Simultaneous Sounds</h3>
+        <p><strong>Bregman (1994)</strong> introduced the framework of Auditory Scene Analysis (ASA) to describe how the auditory system parses complex acoustic environments into distinct "auditory objects" or "streams." When multiple tones sound simultaneously, the brain must determine which frequency components belong together and which come from separate sources.</p>
+
+        <p>Several principles govern this perceptual organization:</p>
+
+        <div class="application-grid">
+            <div class="application-card">
+                <h4><i class="ri-git-merge-line"></i> Harmonicity</h4>
+                <p>Frequency components that form a harmonic series (integer multiples of a fundamental) tend to fuse into a single perceived sound. This is why we hear a single instrument rather than dozens of separate partials.</p>
+            </div>
+            <div class="application-card">
+                <h4><i class="ri-timer-line"></i> Common Onset/Offset</h4>
+                <p>Components that start and stop together are grouped as a single sound. Even brief asynchronies of 30-50 ms can cause components to segregate perceptually.</p>
+            </div>
+            <div class="application-card">
+                <h4><i class="ri-line-chart-line"></i> Common Modulation</h4>
+                <p>Frequency components that vibrato or tremolo together are grouped. Natural instruments produce correlated modulations across all partials, binding them into unified percepts.</p>
+            </div>
+            <div class="application-card">
+                <h4><i class="ri-compass-3-line"></i> Spatial Location</h4>
+                <p>Sounds from the same location tend to group together. Binaural cues (interaural time and level differences) help segregate sources in space.</p>
+            </div>
+        </div>
+
+        <h3>Streaming and the Cocktail Party Effect</h3>
+        <p>When tones alternate rapidly between two frequency regions, perception can flip between hearing one stream (integrated) or two separate streams (segregated). The probability of streaming increases with frequency separation and presentation rate. This relates to the "cocktail party effect" - our ability to follow one voice among many.</p>
+    </section>
+
+    <!-- Critical Bandwidth Section -->
+    <section class="research-section">
+        <h2>Critical Bandwidth</h2>
+
+        <h3>Frequency Resolution of the Auditory System</h3>
+        <p><strong>Zwicker & Fastl (2007)</strong> extensively documented the critical bandwidth phenomenon in their comprehensive psychoacoustics textbook. Critical bandwidth refers to the frequency range within which sounds interact strongly - masking each other and combining loudness.</p>
+
+        <p>The auditory system can be modeled as a bank of overlapping bandpass filters, each tuned to a different center frequency. The bandwidth of these "auditory filters" varies with frequency:</p>
+
+        <table class="research-table">
+            <thead>
+                <tr>
+                    <th>Center Frequency</th>
+                    <th>Critical Bandwidth</th>
+                    <th>Bandwidth as % of CF</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>100 Hz</td>
+                    <td>~100 Hz</td>
+                    <td>100%</td>
+                </tr>
+                <tr>
+                    <td>500 Hz</td>
+                    <td>~100 Hz</td>
+                    <td>20%</td>
+                </tr>
+                <tr>
+                    <td>1000 Hz</td>
+                    <td>~160 Hz</td>
+                    <td>16%</td>
+                </tr>
+                <tr>
+                    <td>2000 Hz</td>
+                    <td>~300 Hz</td>
+                    <td>15%</td>
+                </tr>
+                <tr>
+                    <td>4000 Hz</td>
+                    <td>~700 Hz</td>
+                    <td>17.5%</td>
+                </tr>
+                <tr>
+                    <td>10000 Hz</td>
+                    <td>~1800 Hz</td>
+                    <td>18%</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Practical Implications</h3>
+        <ul class="feature-list">
+            <li><strong>Masking:</strong> A tone can mask another tone within the same critical band. Noise bands wider than one critical band don't mask any more effectively than narrower bands.</li>
+            <li><strong>Roughness and beating:</strong> Two tones within a critical band produce perceived roughness or beating. Beyond the critical band, they're heard as separate smooth tones.</li>
+            <li><strong>MP3 compression:</strong> Perceptual audio codecs exploit masking within critical bands to reduce data without audible degradation.</li>
+            <li><strong>Musical consonance:</strong> Intervals smaller than a critical band tend to sound dissonant due to roughness from interfering partials.</li>
+        </ul>
+    </section>
+
+    <!-- Waveform & Timbre Perception Section -->
+    <section class="research-section">
+        <h2>Waveform & Timbre Perception</h2>
+
+        <h3>How We Distinguish Instruments</h3>
+        <p>Two sounds can have identical pitch and loudness yet sound completely different - a violin versus a trumpet playing the same note. This quality, called timbre or tone color, depends primarily on harmonic content (the amplitudes and phases of overtones) and temporal envelope (how the sound evolves over time).</p>
+
+        <p><strong>McAdams & Giordano (2009)</strong> reviewed decades of timbre research, identifying key acoustic dimensions that listeners use to distinguish instruments:</p>
+
+        <div class="application-grid">
+            <div class="application-card">
+                <h4><i class="ri-equalizer-line"></i> Spectral Centroid</h4>
+                <p>The "center of gravity" of the spectrum - higher values sound brighter. A sawtooth wave has a higher spectral centroid than a triangle wave at the same frequency.</p>
+            </div>
+            <div class="application-card">
+                <h4><i class="ri-pulse-line"></i> Attack Time</h4>
+                <p>How quickly the sound reaches peak amplitude. Percussion has fast attacks; bowed strings have slow attacks. This is a primary timbre cue.</p>
+            </div>
+            <div class="application-card">
+                <h4><i class="ri-bar-chart-box-line"></i> Spectral Flux</h4>
+                <p>How much the spectrum changes over time. Brass instruments have more spectral flux than woodwinds, contributing to their "brassy" quality.</p>
+            </div>
+            <div class="application-card">
+                <h4><i class="ri-contrast-2-line"></i> Harmonic vs Inharmonic</h4>
+                <p>Whether partials form a perfect harmonic series. Bells and gongs have inharmonic partials, giving them their distinctive metallic quality.</p>
+            </div>
+        </div>
+
+        <h3>Waveform Shapes and Their Spectra</h3>
+        <p>The relationship between waveform shape and harmonic content is governed by Fourier analysis:</p>
+
+        <ul class="feature-list">
+            <li><strong>Sine wave:</strong> Contains only the fundamental frequency. The purest possible tone - no harmonics, no timbre complexity.</li>
+            <li><strong>Square wave:</strong> Contains odd harmonics (1, 3, 5, 7...) at amplitudes of 1/n. Sounds hollow and clarinet-like because even harmonics are missing.</li>
+            <li><strong>Sawtooth wave:</strong> Contains all harmonics at amplitudes of 1/n. Bright and buzzy, like brass instruments. Maximum harmonic richness of simple waveforms.</li>
+            <li><strong>Triangle wave:</strong> Contains odd harmonics at amplitudes of 1/n^2. Softer than square wave because higher harmonics are weaker. Sounds flute-like.</li>
+        </ul>
+
+        <div class="disclaimer-box">
+            <i class="ri-information-line"></i>
+            <p><strong>Phase and Perception:</strong> Although waveform shape depends on both amplitude AND phase of harmonics, human hearing is largely insensitive to phase relationships for steady-state tones. A square wave with randomized phases sounds identical to one with aligned phases, despite looking completely different on an oscilloscope. However, phase matters for transients and binaural processing.</p>
+        </div>
+    </section>
+
+    <!-- Research References Section -->
+    <section class="research-section">
+        <h2>Key Research References</h2>
+
+        <div class="references">
+            <ol class="reference-list">
+                <li>Bregman, A. S. (1994). <em>Auditory Scene Analysis: The Perceptual Organization of Sound</em>. MIT Press.</li>
+                <li>de Cheveigne, A. (2005). Pitch perception models. In C. J. Plack, A. J. Oxenham, R. R. Fay, & A. N. Popper (Eds.), <em>Pitch: Neural Coding and Perception</em> (pp. 169-233). Springer.</li>
+                <li>Fletcher, H., & Munson, W. A. (1933). Loudness, its definition, measurement and calculation. <em>Bell System Technical Journal</em>, 12(4), 377-430.</li>
+                <li>Formisano, E., Kim, D. S., Di Salle, F., van de Moortele, P. F., Ugurbil, K., & Goebel, R. (2003). Mirror-symmetric tonotopic maps in human primary auditory cortex. <em>Neuron</em>, 40(4), 859-869.</li>
+                <li>ISO 226:2003. Acoustics - Normal equal-loudness-level contours. International Organization for Standardization.</li>
+                <li>McAdams, S., & Giordano, B. L. (2009). The perception of musical timbre. In S. Hallam, I. Cross, & M. Thaut (Eds.), <em>The Oxford Handbook of Music Psychology</em> (pp. 72-80). Oxford University Press.</li>
+                <li>Moore, B. C. J. (2012). <em>An Introduction to the Psychology of Hearing</em> (6th ed.). Brill.</li>
+                <li>Zwicker, E., & Fastl, H. (2007). <em>Psychoacoustics: Facts and Models</em> (3rd ed.). Springer.</li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- Cross-links -->
+    <div class="cross-links">
+        <a href="/applications" class="cross-link-card">
+            <i class="ri-tools-line"></i>
+            <div class="link-content">
+                <h4>Practical Applications</h4>
+                <p>Real-world uses for tone generators</p>
+            </div>
+        </a>
+        <a href="/traditions" class="cross-link-card">
+            <i class="ri-ancient-gate-line"></i>
+            <div class="link-content">
+                <h4>Traditions & Tuning</h4>
+                <p>Cultural history of pitch standards</p>
+            </div>
+        </a>
+        <a href="/faq" class="cross-link-card">
+            <i class="ri-question-answer-line"></i>
+            <div class="link-content">
+                <h4>FAQ</h4>
+                <p>Common questions about tones</p>
+            </div>
+        </a>
+    </div>
+</div>
+{% endblock %}

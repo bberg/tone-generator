@@ -1,0 +1,384 @@
+{% extends "base.html" %}
+
+{% block title %}Tone Generator FAQ - Common Questions About Frequencies & Sound | ToneSynth{% endblock %}
+
+{% block description %}Answers to frequently asked questions about tone generators, frequencies, waveforms, hearing tests, and audio terminology. Expert explanations for common sound questions.{% endblock %}
+
+{% block meta_extra %}
+<meta property="og:title" content="Tone Generator FAQ - Common Questions About Frequencies & Sound">
+<meta property="og:description" content="Expert answers about waveforms, frequencies, hearing tests, and audio terminology. Everything you need to know about tone generators.">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://tonesynth.com/faq">
+
+<!-- FAQ Schema Markup -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the difference between sine, square, sawtooth, and triangle waves?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sine waves contain only the fundamental frequency - the purest possible tone. Square waves add odd harmonics (3rd, 5th, 7th...) at decreasing amplitudes, creating a hollow sound. Sawtooth waves contain all harmonics, producing the brightest, most complex tone. Triangle waves have odd harmonics like square waves, but they decrease faster, resulting in a softer sound between sine and square."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is A440 and why is it the standard?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A440 means the note A above middle C vibrates at 440 Hz. It became the international standard (ISO 16) in 1955, though it was widely used earlier. The choice of 440 Hz was a compromise between various historical pitches, standardized for practical international coordination. Many European orchestras now tune slightly higher (442-443 Hz) for a brighter sound."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the human hearing range?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The nominal human hearing range is 20 Hz to 20,000 Hz (20 kHz). However, this varies significantly by individual. High-frequency hearing naturally declines with age (presbycusis) - most adults over 40 cannot hear above 15-16 kHz. Low-frequency sensitivity also varies; sounds below about 20 Hz are felt as vibration rather than heard as pitch."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can tone generators damage my hearing?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, if used at excessive volumes. Any sound above 85 dB can cause hearing damage with prolonged exposure. Start at low volume and increase gradually. Take breaks every 15-20 minutes. If you experience ringing, pain, or muffled hearing, stop immediately. Never use tone generators with headphones at maximum volume."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the best frequency for testing speakers?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For comprehensive speaker testing, use a frequency sweep from 20 Hz to 20 kHz. Listen for the point where bass becomes inaudible (the speaker's low-frequency limit), any resonances or peaks in the midrange, and high-frequency extension. Key test frequencies include 1 kHz (standard reference), 100 Hz (bass capability), and 10 kHz (treble extension)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between Hz and kHz?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Hz (Hertz) measures frequency - the number of complete wave cycles per second. kHz (kilohertz) equals 1,000 Hz. So 1 kHz = 1,000 Hz, and 20 kHz = 20,000 Hz. Musical pitch is directly related to frequency: higher frequency = higher pitch. A440 means 440 cycles per second; bass frequencies are around 40-100 Hz."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why do I hear beating when two close frequencies play together?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Beating occurs due to interference between two frequencies. When waves are in phase, they add together; when out of phase, they cancel. With frequencies close together (e.g., 440 Hz and 443 Hz), this alternation creates a pulsating loudness change - the beat frequency equals the difference (3 Hz in this example). Musicians use beats to tune instruments precisely."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is 432 Hz better than 440 Hz?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "There is no scientific evidence that 432 Hz has special healing properties or is more 'natural' than 440 Hz. Claims about Schumann resonance connections are mathematically unfounded. In blind tests, most listeners cannot reliably distinguish the two tunings. That said, 432 Hz is a valid artistic choice - many historical compositions were performed at lower pitches."
+      }
+    }
+  ]
+}
+</script>
+{% endblock %}
+
+{% block tagline %}Answers to common questions about frequencies and sound{% endblock %}
+
+{% block content %}
+<div class="faq-container">
+    <div class="faq-hero">
+        <h1>Frequently Asked Questions</h1>
+        <p>Expert answers about tone generators, frequencies, waveforms, and audio terminology.</p>
+    </div>
+
+    <!-- Waveforms and Sound Questions -->
+    <section class="faq-section">
+        <h2>Waveforms & Sound Basics</h2>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                <span>What is the difference between sine, square, sawtooth, and triangle waves?</span>
+                <i class="ri-arrow-down-s-line"></i>
+            </div>
+            <div class="faq-answer">
+                <p><strong>Sine waves</strong> contain only the fundamental frequency - the purest possible tone with no harmonics. They sound smooth and clean, often described as "pure" or "hollow."</p>
+                <p><strong>Square waves</strong> add odd harmonics (3rd, 5th, 7th...) at decreasing amplitudes (1/3, 1/5, 1/7...). This creates a hollow, buzzy sound reminiscent of clarinets or vintage synthesizers.</p>
+                <p><strong>Sawtooth waves</strong> contain ALL harmonics (both odd and even) at amplitudes of 1/n. This produces the brightest, most harmonically rich sound - similar to brass instruments or aggressive synth leads.</p>
+                <p><strong>Triangle waves</strong> have odd harmonics like square waves, but they decrease much faster (1/n squared). The result is softer and more mellow - somewhere between sine and square.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                <span>What are harmonics and overtones?</span>
+                <i class="ri-arrow-down-s-line"></i>
+            </div>
+            <div class="faq-answer">
+                <p>When a physical object vibrates (string, air column, membrane), it typically vibrates at multiple frequencies simultaneously - not just the fundamental pitch you perceive.</p>
+                <p><strong>Harmonics</strong> are integer multiples of the fundamental frequency. If the fundamental is 100 Hz, harmonics occur at 200 Hz (2nd), 300 Hz (3rd), 400 Hz (4th), and so on.</p>
+                <p><strong>Overtones</strong> refer to any frequency above the fundamental, whether harmonic or not. Bells and drums have inharmonic overtones (not integer multiples), giving them their distinctive metallic or percussive quality.</p>
+                <p>The relative strengths of harmonics determine <strong>timbre</strong> - why a violin and flute playing the same note sound different.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                <span>What is the difference between Hz and kHz?</span>
+                <i class="ri-arrow-down-s-line"></i>
+            </div>
+            <div class="faq-answer">
+                <p><strong>Hz (Hertz)</strong> is the unit of frequency, measuring cycles per second. Named after physicist Heinrich Hertz, it tells you how many complete wave oscillations occur each second.</p>
+                <p><strong>kHz (kilohertz)</strong> equals 1,000 Hz. It's used for higher frequencies to avoid large numbers.</p>
+                <p>Examples:<br>
+                - 20 Hz = very low bass (near the limit of hearing)<br>
+                - 440 Hz = A above middle C (concert pitch)<br>
+                - 1 kHz = 1,000 Hz (common test frequency)<br>
+                - 20 kHz = 20,000 Hz (upper limit of human hearing)</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                <span>Why do I hear beating when two close frequencies play together?</span>
+                <i class="ri-arrow-down-s-line"></i>
+            </div>
+            <div class="faq-answer">
+                <p><strong>Beating</strong> is an interference phenomenon. When two waves are close in frequency, they alternately reinforce and cancel each other as they drift in and out of phase.</p>
+                <p>The beat rate equals the frequency difference. If you play 440 Hz and 443 Hz together, you'll hear 3 beats per second (the loudness pulses 3 times per second).</p>
+                <p>Musicians use beating to tune instruments. When two notes are perfectly in tune (or in a perfect interval), the beating stops. Piano tuners listen to beat rates to set equal temperament precisely.</p>
+                <p>Above about 20 Hz difference, beating becomes too fast to perceive as separate pulses and instead creates a sensation of roughness or dissonance.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Frequency and Pitch Questions -->
+    <section class="faq-section">
+        <h2>Frequency & Pitch</h2>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                <span>What is A440 and why is it the standard?</span>
+                <i class="ri-arrow-down-s-line"></i>
+            </div>
+            <div class="faq-answer">
+                <p><strong>A440</strong> means the note A above middle C (A4) vibrates at exactly 440 Hz. This has been the international standard for concert pitch since ISO 16 was adopted in 1955.</p>
+                <p>The choice of 440 Hz was a compromise. Historical concert pitch varied widely (from about 400 Hz to 460 Hz). As orchestras traveled internationally, standardization became necessary for practical coordination.</p>
+                <p>Today, many European orchestras tune slightly higher - 442 Hz (some German orchestras) or 443 Hz (Vienna Philharmonic) - for a brighter, more projecting sound. Baroque ensembles often use A = 415 Hz (approximately one semitone lower) for historical authenticity.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                <span>What is the human hearing range?</span>
+                <i class="ri-arrow-down-s-line"></i>
+            </div>
+            <div class="faq-answer">
+                <p>The nominal human hearing range is <strong>20 Hz to 20,000 Hz</strong> (20 kHz), but this varies significantly:</p>
+                <p><strong>Low frequency limit (~20 Hz):</strong> Below about 20 Hz, we feel vibration rather than perceive pitch. Individual sensitivity varies - some people can hear down to 16-18 Hz in quiet conditions.</p>
+                <p><strong>High frequency limit:</strong> This declines with age (presbycusis). Children may hear up to 20 kHz; by age 40-50, most people lose sensitivity above 14-16 kHz; by 60+, the limit may be 8-10 kHz.</p>
+                <p><strong>Peak sensitivity:</strong> Human hearing is most sensitive around 2-4 kHz - the speech-critical frequency range.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                <span>What is equal temperament?</span>
+                <i class="ri-arrow-down-s-line"></i>
+            </div>
+            <div class="faq-answer">
+                <p><strong>Equal temperament</strong> is the modern Western tuning system that divides the octave into 12 equal semitones. Each semitone is exactly the 12th root of 2 (approximately 1.0595), so 12 semitones equal exactly one octave (2:1 ratio).</p>
+                <p>This system allows music to be played in any key with equal effect, at the cost of slightly detuning pure intervals. In equal temperament:</p>
+                <p>- Perfect fifths are 2 cents narrow (698 cents instead of 702 cents)<br>
+                - Major thirds are 14 cents wide (400 cents instead of 386 cents)<br>
+                - Only octaves are perfectly pure</p>
+                <p>Before equal temperament, various "well temperaments" and "just intonation" systems were used, each with different compromises.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                <span>What are cents in music tuning?</span>
+                <i class="ri-arrow-down-s-line"></i>
+            </div>
+            <div class="faq-answer">
+                <p><strong>Cents</strong> are a logarithmic unit for measuring pitch intervals. One semitone equals 100 cents, so one octave equals 1200 cents.</p>
+                <p>The cent is defined as 1/1200 of an octave, or a frequency ratio of 2^(1/1200) ≈ 1.00058.</p>
+                <p>This system is useful because:</p>
+                <p>- It's consistent across the frequency range (unlike Hz, which varies with register)<br>
+                - Small pitch differences are easily expressed (e.g., "5 cents sharp")<br>
+                - It matches musical perception (equal-sounding intervals = equal cent differences)</p>
+                <p>Most trained musicians can perceive pitch differences of 5-10 cents; highly trained ears may detect 2-3 cents under ideal conditions.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                <span>Is 432 Hz better than 440 Hz?</span>
+                <i class="ri-arrow-down-s-line"></i>
+            </div>
+            <div class="faq-answer">
+                <p>There is <strong>no scientific evidence</strong> that 432 Hz has special healing properties or is more "natural" than 440 Hz.</p>
+                <p>Common claims about 432 Hz include connections to Schumann resonance, water crystallization, and ancient tuning systems. However:</p>
+                <p>- 432 is not a harmonic of the Schumann frequency (7.83 Hz)<br>
+                - Controlled water crystallization claims have not been replicated<br>
+                - Historical tuning varied widely and was not standardized at 432 Hz<br>
+                - In blind tests, most listeners cannot distinguish 432 Hz from 440 Hz</p>
+                <p>That said, 432 Hz is a valid artistic choice. The 32-cent difference creates a slightly "warmer" or "softer" character that some musicians prefer. Many historical compositions were performed at lower pitches.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hearing and Safety Questions -->
+    <section class="faq-section">
+        <h2>Hearing & Safety</h2>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                <span>Can tone generators damage my hearing?</span>
+                <i class="ri-arrow-down-s-line"></i>
+            </div>
+            <div class="faq-answer">
+                <p><strong>Yes, if used at excessive volumes.</strong> Any sound above 85 dB can cause hearing damage with prolonged exposure. Pure tones can be particularly fatiguing.</p>
+                <p><strong>Safety guidelines:</strong></p>
+                <p>- Start at low volume and increase gradually<br>
+                - Take breaks every 15-20 minutes<br>
+                - If sound becomes uncomfortable, reduce volume immediately<br>
+                - Never use maximum volume with headphones<br>
+                - If you experience ringing, pain, or muffled hearing, stop immediately</p>
+                <p>Certain frequencies are more potentially harmful. The ear is most sensitive around 3-4 kHz, and this region is also most vulnerable to damage.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                <span>Is this a substitute for a professional hearing test?</span>
+                <i class="ri-arrow-down-s-line"></i>
+            </div>
+            <div class="faq-answer">
+                <p><strong>No.</strong> Online hearing tests are screening tools only, not diagnostic instruments.</p>
+                <p>Professional audiometry:</p>
+                <p>- Is conducted in calibrated sound-treated rooms<br>
+                - Uses calibrated audiometric equipment<br>
+                - Tests bone conduction (not just air conduction)<br>
+                - Assesses speech discrimination, not just tone detection<br>
+                - Can identify specific types and causes of hearing loss<br>
+                - Is performed by trained audiologists who can interpret results</p>
+                <p>If you have concerns about your hearing, please consult an audiologist. Sudden hearing loss is a medical emergency requiring immediate evaluation.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                <span>What is tinnitus and can tone generators help?</span>
+                <i class="ri-arrow-down-s-line"></i>
+            </div>
+            <div class="faq-answer">
+                <p><strong>Tinnitus</strong> is the perception of sound (typically ringing, buzzing, or hissing) without an external source. It affects approximately 15% of adults.</p>
+                <p>Tone generators may help in several ways:</p>
+                <p><strong>Frequency matching:</strong> Identifying your tinnitus frequency can guide masking sounds and inform treatment.</p>
+                <p><strong>Masking:</strong> Playing sounds at or near your tinnitus frequency may provide temporary relief by reducing its prominence.</p>
+                <p><strong>Notched therapy:</strong> Some research suggests listening to music with your tinnitus frequency removed may reduce perception over time.</p>
+                <p>However, tinnitus can indicate serious underlying conditions. New, changing, pulsatile, or unilateral tinnitus warrants medical evaluation.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Questions -->
+    <section class="faq-section">
+        <h2>Technical Questions</h2>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                <span>How does ToneSynth generate sounds?</span>
+                <i class="ri-arrow-down-s-line"></i>
+            </div>
+            <div class="faq-answer">
+                <p>ToneSynth uses the <strong>Web Audio API</strong> - a powerful browser-based audio system - to synthesize sounds in real-time.</p>
+                <p>The process:</p>
+                <p>1. <strong>Oscillator nodes</strong> generate the basic waveform (sine, square, sawtooth, triangle)<br>
+                2. <strong>Frequency parameter</strong> sets the pitch (controlled by your input)<br>
+                3. <strong>Gain nodes</strong> control volume with smooth attack/release envelopes<br>
+                4. <strong>Analyzer nodes</strong> provide data for the waveform visualization</p>
+                <p>Everything is computed mathematically - no audio files are loaded. This means the generator works offline and frequencies are precise to within the limits of JavaScript/Web Audio precision.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                <span>What is the best frequency for testing speakers?</span>
+                <i class="ri-arrow-down-s-line"></i>
+            </div>
+            <div class="faq-answer">
+                <p>For <strong>comprehensive speaker testing</strong>, use a frequency sweep from 20 Hz to 20 kHz. Listen for:</p>
+                <p><strong>Low-frequency limit:</strong> Sweep from 100 Hz down to 20 Hz. Note where output drops or distortion appears - this is your speaker's bass limit.</p>
+                <p><strong>Midrange:</strong> Sweep 200 Hz to 2 kHz, listening for peaks or dips that indicate cabinet resonances or crossover issues.</p>
+                <p><strong>High-frequency:</strong> Sweep up to your hearing limit, noting any harshness or early rolloff.</p>
+                <p><strong>Key test frequencies:</strong></p>
+                <p>- 1 kHz: Standard reference frequency<br>
+                - 100 Hz: Bass capability<br>
+                - 50-60 Hz: Subwoofer territory<br>
+                - 10 kHz: High-frequency extension</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                <span>Why does sound quality seem to change at different volumes?</span>
+                <i class="ri-arrow-down-s-line"></i>
+            </div>
+            <div class="faq-answer">
+                <p>This is due to <strong>equal loudness contours</strong> (Fletcher-Munson curves). Human hearing is not equally sensitive across all frequencies - we're most sensitive around 3-4 kHz and much less sensitive to bass frequencies.</p>
+                <p>At low volumes, bass and treble seem to disappear, leaving mostly midrange. At higher volumes, the frequency response "flattens" and you hear fuller bass and more treble.</p>
+                <p>This is why:</p>
+                <p>- "Loudness" buttons on stereos boost bass and treble at low volumes<br>
+                - Music sounds "fuller" when played loud<br>
+                - Mixing engineers work at consistent, calibrated levels<br>
+                - You may need to boost bass for quiet late-night listening</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                <span>Why can't I hear very high frequencies?</span>
+                <i class="ri-arrow-down-s-line"></i>
+            </div>
+            <div class="faq-answer">
+                <p>Several factors affect high-frequency audibility:</p>
+                <p><strong>Age:</strong> High-frequency hearing naturally declines. By age 40, many people cannot hear above 15 kHz; by 60, the limit may be 8-10 kHz.</p>
+                <p><strong>Noise exposure:</strong> Prior exposure to loud sounds damages the delicate hair cells that detect high frequencies.</p>
+                <p><strong>Equipment:</strong> Many speakers and headphones roll off above 15-18 kHz. Check your equipment specifications.</p>
+                <p><strong>Volume:</strong> High frequencies may simply be too quiet. The tone generator produces equal electrical amplitude across frequencies, but your equipment may not reproduce them equally.</p>
+                <p>If you're concerned about high-frequency hearing loss, consult an audiologist for proper testing.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cross-links -->
+    <div class="cross-links">
+        <a href="/science" class="cross-link-card">
+            <i class="ri-flask-line"></i>
+            <div class="link-content">
+                <h4>Science & Research</h4>
+                <p>Psychoacoustics of pitch perception</p>
+            </div>
+        </a>
+        <a href="/applications" class="cross-link-card">
+            <i class="ri-tools-line"></i>
+            <div class="link-content">
+                <h4>Practical Applications</h4>
+                <p>Real-world uses for tone generators</p>
+            </div>
+        </a>
+        <a href="/traditions" class="cross-link-card">
+            <i class="ri-ancient-gate-line"></i>
+            <div class="link-content">
+                <h4>Traditions & Tuning</h4>
+                <p>Cultural history of pitch standards</p>
+            </div>
+        </a>
+    </div>
+</div>
+{% endblock %}
