@@ -1,0 +1,6 @@
+# robots.txt for tonesynth.com
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://tonesynth.com/sitemap.xml
