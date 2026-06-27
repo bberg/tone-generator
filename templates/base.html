@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}ToneSynth - Online Tone Synthesizer{% endblock %}</title>
-    <meta name="description" content="{% block description %}ToneSynth is a free online tone synthesizer with sine, square, sawtooth, and triangle waveforms. Frequency sweep, hearing test mode, instrument tuning presets.{% endblock %}">
+    <title>{% block title %}Tone Generator - Pure Tones & Frequency Sweep | ToneSynth{% endblock %}</title>
+    <meta name="description" content="{% block description %}Free online tone generator with sine, square, sawtooth, and triangle waves. Play any frequency from 20 Hz to 20 kHz, run sweeps, and test your hearing range.{% endblock %}">
     {% block meta_extra %}{% endblock %}
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-DR8ZLTPQGB"></script>
@@ -16,6 +16,9 @@
     </script>
     <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon.svg') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
     <!-- Google AdSense -->
@@ -48,7 +51,7 @@
     <div class="container">
         <header class="page-header">
             <div class="header-content">
-                <h1><a href="/" style="color: inherit; text-decoration: none;">ToneSynth</a></h1>
+                <p class="site-title"><a href="/" style="color: inherit; text-decoration: none;">ToneSynth</a></p>
                 <p class="tagline">{% block tagline %}Online tone synthesizer with pure waveforms{% endblock %}</p>
             </div>
         </header>
@@ -58,6 +61,16 @@
             <a href="/#sweep" class="nav-link"><i class="ri-line-chart-line"></i> Sweep</a>
             <a href="/#hearing-test" class="nav-link"><i class="ri-ear-line"></i> Hearing Test</a>
             <a href="/#presets" class="nav-link"><i class="ri-bookmark-line"></i> Presets</a>
+            <div class="nav-dropdown">
+                <a href="#" class="nav-link dropdown-trigger {% if active_page in ['for-tuning', 'for-tinnitus', 'for-hearing-test', 'for-studying', 'for-music-production'] %}active{% endif %}"><i class="ri-lightbulb-line"></i> Use Cases <i class="ri-arrow-down-s-line dropdown-arrow"></i></a>
+                <div class="dropdown-menu">
+                    <a href="/for-tuning" {% if active_page == 'for-tuning' %}class="active"{% endif %}><i class="ri-music-line"></i> Tuning Instruments</a>
+                    <a href="/for-music-production" {% if active_page == 'for-music-production' %}class="active"{% endif %}><i class="ri-sound-module-line"></i> Music Production</a>
+                    <a href="/for-tinnitus" {% if active_page == 'for-tinnitus' %}class="active"{% endif %}><i class="ri-volume-vibrate-line"></i> Tinnitus & Sound Therapy</a>
+                    <a href="/for-hearing-test" {% if active_page == 'for-hearing-test' %}class="active"{% endif %}><i class="ri-ear-line"></i> At-Home Hearing Test</a>
+                    <a href="/for-studying" {% if active_page == 'for-studying' %}class="active"{% endif %}><i class="ri-book-open-line"></i> Focus While Studying</a>
+                </div>
+            </div>
             <div class="nav-dropdown">
                 <a href="#" class="nav-link dropdown-trigger {% if active_page in ['science', 'applications', 'traditions', 'faq'] %}active{% endif %}"><i class="ri-information-line"></i> Info <i class="ri-arrow-down-s-line dropdown-arrow"></i></a>
                 <div class="dropdown-menu">
@@ -98,13 +111,22 @@
                     <a href="/traditions">Traditions & Tuning</a>
                     <a href="/faq">FAQ</a>
                 </div>
+                <div class="footer-links">
+                    <h4>Use Cases</h4>
+                    <a href="/for-tuning">Tuning Instruments</a>
+                    <a href="/for-music-production">Music Production</a>
+                    <a href="/for-tinnitus">Tinnitus & Sound Therapy</a>
+                    <a href="/for-hearing-test">At-Home Hearing Test</a>
+                    <a href="/for-studying">Focus While Studying</a>
+                </div>
                 <div class="footer-related">
                     <h4>Audio Tools Network</h4>
-                    <a href="https://focushum.com" target="_blank">Noise Generator</a>
-                    <a href="https://binauralhq.com" target="_blank">Binaural Beats</a>
-                    <a href="https://omtones.com" target="_blank">Drone Generator</a>
-                    <a href="https://testtones.com" target="_blank">Frequency Generator</a>
-                    <a href="https://metronomely.com" target="_blank">Metronome</a>
+                    <a href="https://sirengenerator.com" target="_blank" rel="noopener">Siren Generator</a>
+                    <a href="https://focushum.com" target="_blank" rel="noopener">Focus Hum</a>
+                    <a href="https://binauralhq.com" target="_blank" rel="noopener">BinauralHQ</a>
+                    <a href="https://omtones.com" target="_blank" rel="noopener">OmTones</a>
+                    <a href="https://testtones.com" target="_blank" rel="noopener">TestTones</a>
+                    <a href="https://metronomely.com" target="_blank" rel="noopener">Metronomely</a>
                 </div>
             </div>
             <div class="footer-bottom">

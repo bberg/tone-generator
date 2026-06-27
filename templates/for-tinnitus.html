@@ -1,0 +1,212 @@
+{% extends "base.html" %}
+
+{% block title %}Tone Generator for Tinnitus - Match Your Pitch | ToneSynth{% endblock %}
+
+{% block description %}Use a free tone generator to find the pitch of your tinnitus and explore sound therapy. Adjustable pure tones from 20 Hz to 20 kHz with fine-tune controls.{% endblock %}
+
+{% block meta_extra %}
+<meta property="og:title" content="Tone Generator for Tinnitus - Match Your Pitch & Try Sound Therapy">
+<meta property="og:description" content="Find the frequency of your tinnitus and explore masking with adjustable pure tones. Free online tone generator with fine-tune controls.">
+<meta property="og:type" content="article">
+<link rel="canonical" href="https://tonesynth.com/for-tinnitus">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Using a Tone Generator for Tinnitus: Frequency Matching and Sound Therapy",
+  "description": "How to use pure tones to identify the pitch of your tinnitus, explore masking and notched sound therapy, and what the research does and does not support.",
+  "author": {"@type": "Organization", "name": "ToneSynth"},
+  "publisher": {"@type": "Organization", "name": "ToneSynth"}
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What frequency is most tinnitus?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tonal tinnitus most often falls in the 3 kHz to 8 kHz range, frequently near a region of high-frequency hearing loss. That said, it can occur at any pitch, and some people hear a hiss or roar rather than a clear tone. The only way to find yours is to match it by ear."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can a tone generator cure tinnitus?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. A tone generator is a measurement and self-help aid, not a treatment. Masking can offer short-term relief and notched therapy may help over time, but evidence is mixed and individual. See a qualified professional for assessment and a plan."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is it safe to play tones if I have tinnitus?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Keep the volume low and your sessions short. Loud sounds can aggravate tinnitus and damage hearing, and the ear is most vulnerable around 3 to 4 kHz, exactly where you may be matching. If a tone feels uncomfortable or your tinnitus worsens, stop."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does the tone seem to merge with my tinnitus?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "When an external pure tone matches the frequency of your tinnitus, the brain often stops separating the two and they blend into a single sound. That fusion is the cue that you have found a close match. Nudge the fine-tune buttons to confirm where it locks in."
+      }
+    }
+  ]
+}
+</script>
+{% endblock %}
+
+{% block tagline %}Pure tones for tinnitus matching and sound therapy{% endblock %}
+
+{% block content %}
+<div class="use-case-container">
+    <div class="use-case-hero">
+        <h1>A tone generator for tinnitus</h1>
+        <p class="hero-subtitle">Find the pitch of your ringing, experiment with masking, and explore notched sound therapy using clean, adjustable pure tones.</p>
+        <a href="/#generator" class="cta-button"><i class="ri-play-circle-line" aria-hidden="true"></i> Open the tone generator</a>
+    </div>
+
+    <section class="use-case-section">
+        <div class="disclaimer-box">
+            <i class="ri-information-line" aria-hidden="true"></i>
+            <p><strong>Not medical advice.</strong> This page is educational. ToneSynth is not a diagnostic or treatment tool. Tinnitus can signal an underlying condition, and sudden, one-sided, or pulsatile tinnitus needs prompt medical attention. Talk to an audiologist or ENT specialist before starting any sound-therapy routine.</p>
+        </div>
+
+        <h2>Why a pure tone helps you understand tinnitus</h2>
+        <p>Tinnitus is the perception of sound with no external source, usually heard as a ring, hiss, buzz, or tone. For many people it sits at a fairly specific pitch. A tone generator lets you play a single, clean frequency and compare it directly against what you hear, which is something a noisy environment or a music track cannot do.</p>
+        <p><strong>A sine wave is the right tool here</strong> because it contains only one frequency with no harmonics. That makes the match unambiguous: when the tone lines up with your tinnitus, the two sounds tend to fuse together. ToneSynth defaults to a sine wave, so you can start matching immediately.</p>
+
+        <div class="benefit-grid">
+            <div class="benefit-card">
+                <i class="ri-focus-3-line" aria-hidden="true"></i>
+                <h3>Pinpoint the pitch</h3>
+                <p>Sweep and fine-tune a sine wave until it sits on top of your tinnitus to estimate its frequency.</p>
+            </div>
+            <div class="benefit-card">
+                <i class="ri-volume-down-line" aria-hidden="true"></i>
+                <h3>Try gentle masking</h3>
+                <p>A quiet tone near your tinnitus pitch can make the ringing less noticeable for a while.</p>
+            </div>
+            <div class="benefit-card">
+                <i class="ri-information-line" aria-hidden="true"></i>
+                <h3>Brief your clinician</h3>
+                <p>Knowing your approximate pitch gives an audiologist a useful starting point.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="use-case-section">
+        <h2>How to match your tinnitus frequency</h2>
+        <p>Use good headphones in a quiet room and keep the volume low. You are matching pitch, not loudness, so there is no need to make the tone loud.</p>
+        <ul class="tips-list">
+            <li><strong>Start with a sine wave.</strong> Leave the waveform on Sine, the default and the purest option.</li>
+            <li><strong>Get in the neighborhood.</strong> Most tonal tinnitus sits between 3 kHz and 8 kHz. Tap the 1 kHz preset, then drag the frequency slider up while you listen.</li>
+            <li><strong>Close in with the number box.</strong> Type values straight into the frequency input to jump to a specific reading like 4,000 or 6,000 Hz.</li>
+            <li><strong>Fine-tune in small steps.</strong> Use the +1, +0.1, and matching minus buttons to nudge the tone until it disappears into your ringing.</li>
+            <li><strong>Note the reading.</strong> Write down the frequency shown in the value display so you can repeat it or share it.</li>
+        </ul>
+        <p>Tinnitus pitch can drift from day to day, so treat the number as an estimate rather than a fixed measurement. Re-checking on a few separate days gives a more reliable picture.</p>
+    </section>
+
+    <section class="use-case-section">
+        <h2>Masking and notched sound therapy</h2>
+        <p>Once you have a rough pitch, there are two common approaches people explore with a tone generator. Neither is a cure, and results vary from person to person.</p>
+        <p><strong>Masking</strong> means playing a sound at or near your tinnitus frequency at a low, comfortable level so the ringing fades into the background. Some people find a steady tone works; others prefer broadband noise, which a sibling tool like <a href="https://focushum.com" target="_blank" rel="noopener">Focus Hum</a> can provide. The goal is relief in the moment, not silence.</p>
+        <p><strong>Notched sound therapy</strong> takes the opposite tack: you listen to sound with energy <em>removed</em> around your tinnitus frequency. Research on notched music therapy suggests it may gradually reduce tinnitus loudness for some listeners over weeks of regular listening. A single tone generator cannot create a notch on its own, but identifying your pitch is the first step toward setting one up with other tools.</p>
+    </section>
+
+    <section class="use-case-section">
+        <h2>Frequently asked questions</h2>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                <span>What frequency is most tinnitus?</span>
+                <i class="ri-arrow-down-s-line" aria-hidden="true"></i>
+            </div>
+            <div class="faq-answer">
+                <p>Tonal tinnitus most often falls in the 3 kHz to 8 kHz range, frequently near a region of high-frequency hearing loss. That said, it can occur at any pitch, and some people hear a hiss or roar rather than a clear tone. The only way to find yours is to match it by ear.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                <span>Can a tone generator cure tinnitus?</span>
+                <i class="ri-arrow-down-s-line" aria-hidden="true"></i>
+            </div>
+            <div class="faq-answer">
+                <p>No. A tone generator is a measurement and self-help aid, not a treatment. Masking can offer short-term relief and notched therapy may help over time, but evidence is mixed and individual. See a qualified professional for assessment and a plan.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                <span>Is it safe to play tones if I have tinnitus?</span>
+                <i class="ri-arrow-down-s-line" aria-hidden="true"></i>
+            </div>
+            <div class="faq-answer">
+                <p>Keep the volume low and your sessions short. Loud sounds can aggravate tinnitus and damage hearing, and the ear is most vulnerable around 3 to 4 kHz, exactly where you may be matching. If a tone feels uncomfortable or your tinnitus worsens, stop.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                <span>Why does the tone seem to merge with my tinnitus?</span>
+                <i class="ri-arrow-down-s-line" aria-hidden="true"></i>
+            </div>
+            <div class="faq-answer">
+                <p>When an external pure tone matches the frequency of your tinnitus, the brain often stops separating the two and they blend into a single sound. That fusion is the cue that you have found a close match. Nudge the fine-tune buttons to confirm where it locks in.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="use-case-section">
+        <h2>Recommended gear</h2>
+        <div class="recommended-gear">
+            <h4><i class="ri-headphone-line" aria-hidden="true"></i> Comfortable over-ear headphones</h4>
+            <p>For matching a faint pitch or playing quiet background sound for a while, a comfortable, low-distortion pair makes the experience easier on the ears:</p>
+            <ul>
+                <li><a href="https://amazon.com/dp/B09XS7JWHH?tag=audiotools20-20" target="_blank" rel="noopener">Sony WH-1000XM5</a> — plush, lightweight, and useful for quieting a noisy room</li>
+                <li><a href="https://amazon.com/dp/B00001WRSJ?tag=audiotools20-20" target="_blank" rel="noopener">Sennheiser HD 600</a> — open-back comfort with a clean, even sound</li>
+            </ul>
+            <p class="gear-note">Links may earn us a commission at no extra cost to you.</p>
+        </div>
+    </section>
+
+    <div class="cta-section">
+        <h2>Find your pitch</h2>
+        <p>Open the generator, switch to a sine wave, and sweep up until the tone meets your tinnitus.</p>
+        <a href="/#generator" class="cta-button"><i class="ri-play-circle-line" aria-hidden="true"></i> Start matching</a>
+    </div>
+
+    <div class="cross-links">
+        <a href="/for-hearing-test" class="cross-link-card">
+            <i class="ri-ear-line" aria-hidden="true"></i>
+            <div class="link-content">
+                <h4>At-home hearing test</h4>
+                <p>Check your frequency range</p>
+            </div>
+        </a>
+        <a href="/science" class="cross-link-card">
+            <i class="ri-flask-line" aria-hidden="true"></i>
+            <div class="link-content">
+                <h4>Science &amp; research</h4>
+                <p>Psychoacoustics and masking</p>
+            </div>
+        </a>
+        <a href="https://focushum.com" class="cross-link-card" target="_blank" rel="noopener">
+            <i class="ri-sound-module-line" aria-hidden="true"></i>
+            <div class="link-content">
+                <h4>Focus Hum</h4>
+                <p>Broadband noise for masking</p>
+            </div>
+        </a>
+    </div>
+</div>
+{% endblock %}

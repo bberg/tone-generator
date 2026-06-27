@@ -25,6 +25,26 @@ def traditions():
 def faq():
     return render_template('faq.html', active_page='faq')
 
+@app.route('/for-tinnitus')
+def for_tinnitus():
+    return render_template('for-tinnitus.html', active_page='for-tinnitus')
+
+@app.route('/for-tuning')
+def for_tuning():
+    return render_template('for-tuning.html', active_page='for-tuning')
+
+@app.route('/for-hearing-test')
+def for_hearing_test():
+    return render_template('for-hearing-test.html', active_page='for-hearing-test')
+
+@app.route('/for-studying')
+def for_studying():
+    return render_template('for-studying.html', active_page='for-studying')
+
+@app.route('/for-music-production')
+def for_music_production():
+    return render_template('for-music-production.html', active_page='for-music-production')
+
 @app.route('/favicon.ico')
 def favicon():
     return send_from_directory(os.path.join(app.root_path, 'static'),
@@ -69,6 +89,36 @@ def sitemap():
     </url>
     <url>
         <loc>https://tonesynth.com/faq</loc>
+        <lastmod>{today}</lastmod>
+        <priority>0.9</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://tonesynth.com/for-tinnitus</loc>
+        <lastmod>{today}</lastmod>
+        <priority>0.9</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://tonesynth.com/for-tuning</loc>
+        <lastmod>{today}</lastmod>
+        <priority>0.9</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://tonesynth.com/for-hearing-test</loc>
+        <lastmod>{today}</lastmod>
+        <priority>0.9</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://tonesynth.com/for-studying</loc>
+        <lastmod>{today}</lastmod>
+        <priority>0.9</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://tonesynth.com/for-music-production</loc>
         <lastmod>{today}</lastmod>
         <priority>0.9</priority>
         <changefreq>monthly</changefreq>

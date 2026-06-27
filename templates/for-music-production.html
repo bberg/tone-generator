@@ -1,0 +1,213 @@
+{% extends "base.html" %}
+
+{% block title %}Tone Generator for Music Production | ToneSynth{% endblock %}
+
+{% block description %}Generate pure sine test tones for music production: tuning references, sub-bass layers, sound design, ear training, and checking a mix against a set frequency.{% endblock %}
+
+{% block meta_extra %}
+<meta property="og:title" content="Tone Generator for Music Production - Reference & Test Tones in the DAW">
+<meta property="og:description" content="Pure reference and test tones for producers: pitch references, clean sub layers, sound-design source material, ear training, and frequency checks for your mix.">
+<meta property="og:type" content="article">
+<link rel="canonical" href="https://tonesynth.com/for-music-production">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Using a Tone Generator in Music Production",
+  "description": "How producers use pure reference and test tones in the DAW: pitch references, sub-bass layers, sound-design source material, ear training, and frequency checks against a known tone.",
+  "author": {"@type": "Organization", "name": "ToneSynth"},
+  "publisher": {"@type": "Organization", "name": "ToneSynth"}
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Why use a pure sine tone in music production?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A sine wave is a single frequency with no harmonics, so it gives you an unambiguous reference. That makes it ideal for checking tuning, reinforcing a sub-bass fundamental, training your ear to recognize specific frequencies, and verifying that a part sits exactly where you think it does in the spectrum."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What frequency should I use to layer a sub-bass?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Match the sine to the musical note your bass is playing. A low E1 is 41.2 Hz, A1 is 55 Hz, and C2 is 65.41 Hz. Type the exact frequency into ToneSynth's number box, confirm the nearest-note readout, then tune your sub layer to the same pitch so it locks with the rest of the low end instead of clashing."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can a tone generator help me train my ears?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Play a known frequency such as 1 kHz, listen closely, then try to find it again later by ear before checking the readout. Repeating this with frequencies across the spectrum builds the kind of frequency recognition that makes EQ decisions faster and more deliberate."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I check my speakers or room with a sweep?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Use ToneSynth's sweep mode with the Full Range 20 Hz to 20 kHz preset, or the Sub-Bass 20 to 200 Hz preset for the low end. Listen at a moderate volume for frequencies that jump out louder or vanish entirely. Those peaks and dips reveal room modes and speaker limits that color every mix decision you make."
+      }
+    }
+  ]
+}
+</script>
+{% endblock %}
+
+{% block tagline %}Reference and test tones for the studio{% endblock %}
+
+{% block content %}
+<div class="use-case-container">
+    <div class="use-case-hero">
+        <h1>A tone generator for music production</h1>
+        <p class="hero-subtitle">Pure reference and test tones for the studio: confirm tuning, anchor a sub-bass, build sound-design source material, and check your mix against a frequency you can trust.</p>
+        <a href="/#generator" class="cta-button"><i class="ri-sound-module-line" aria-hidden="true"></i> Open the generator</a>
+    </div>
+
+    <section class="use-case-section">
+        <h2>Why producers keep a tone generator handy</h2>
+        <p>Plugins and synths give you endless ways to shape sound, but every now and then you need the opposite: a single, known frequency with nothing else attached. A pure sine tone is exactly that. It has no harmonics, no movement, and no character to second-guess, which makes it the most honest reference you can put next to a track.</p>
+        <p><strong>That neutrality is what makes it useful across the whole workflow.</strong> The same clean tone can confirm a sample is in tune, reinforce the fundamental under a kick or bass, give your ears a fixed target during a listening session, or expose a resonant peak in your room. ToneSynth runs in a browser tab next to your DAW, so the reference is always a click away without loading a plugin or printing a region.</p>
+
+        <div class="benefit-grid">
+            <div class="benefit-card">
+                <i class="ri-pitch-line" aria-hidden="true"></i>
+                <h3>Trustworthy pitch</h3>
+                <p>Pick A4 at 440, 442, 443, or 432 Hz and check a sample or synth against a stable reference.</p>
+            </div>
+            <div class="benefit-card">
+                <i class="ri-bass-line" aria-hidden="true"></i>
+                <h3>Clean sub layers</h3>
+                <p>Dial an exact low frequency to reinforce a bass fundamental that translates on small speakers.</p>
+            </div>
+            <div class="benefit-card">
+                <i class="ri-equalizer-line" aria-hidden="true"></i>
+                <h3>Sharper ears</h3>
+                <p>Learn the sound of specific frequencies so your EQ and mix moves get faster and more deliberate.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="use-case-section">
+        <h2>How to use ToneSynth alongside your DAW</h2>
+        <p>Keep the generator open in a second tab and reach for it whenever you need a reference. Here are the moves that come up most in a session.</p>
+        <ul class="tips-list">
+            <li><strong>Check tuning against a reference.</strong> Tap the A4 = 440 Hz preset (or 442 and 443 for orchestral work), then play your sample or synth and listen for the slow beating that means it is slightly off. Adjust the part until the pulsing stops.</li>
+            <li><strong>Anchor a sub-bass.</strong> Leave the waveform on Sine, type the exact note frequency into the Frequency box, such as 41.2 Hz for E1, and use it as a guide while you tune your own sub layer to match.</li>
+            <li><strong>Generate source material.</strong> A raw sine is the starting point for kick-drum body, sine-bass, risers, and FX. Use the frequency slider and the Fine Tune control to land on the exact pitch, then record the output into your DAW to mangle further.</li>
+            <li><strong>Train your ear.</strong> Play a known frequency, name it, then come back later and try to find it by ear before reading the value. Repeat across the spectrum to build frequency recognition.</li>
+            <li><strong>Sweep your room.</strong> Switch to the Sweep tab and run the Full Range or Sub-Bass preset to hear where your monitors and room emphasize or swallow certain frequencies.</li>
+        </ul>
+        <p>For interval and tuning experiments, the dual-tone mode plays a second oscillator at the same time, so you can stack an octave or a fifth and hear how two pitches lock together before committing the idea in your project.</p>
+    </section>
+
+    <section class="use-case-section">
+        <h2>Reference frequencies worth memorizing</h2>
+        <p>A handful of frequencies come up constantly in production. Keeping them in mind makes the tone generator a faster reference.</p>
+        <ul class="tips-list">
+            <li><strong>440 Hz (A4):</strong> The standard concert-pitch reference for checking tuning on samples, synths, and live takes.</li>
+            <li><strong>41.2 Hz (E1) and 55 Hz (A1):</strong> Common sub-bass fundamentals; reinforce these to give low end that holds up on real speakers.</li>
+            <li><strong>1 kHz:</strong> The classic alignment tone for level matching and the easiest pitch to use as an ear-training anchor.</li>
+            <li><strong>2 to 5 kHz:</strong> The presence and harshness region; learn its sound and your vocal and cymbal EQ choices get much quicker.</li>
+            <li><strong>50 or 60 Hz:</strong> Mains hum; recognizing it by ear helps you spot ground-loop noise sneaking into a recording.</li>
+        </ul>
+    </section>
+
+    <section class="use-case-section">
+        <h2>Common questions</h2>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                <span>Why use a pure sine tone in music production?</span>
+                <i class="ri-arrow-down-s-line" aria-hidden="true"></i>
+            </div>
+            <div class="faq-answer">
+                <p>A sine wave is a single frequency with no harmonics, so it gives you an unambiguous reference. That makes it ideal for checking tuning, reinforcing a sub-bass fundamental, training your ear to recognize specific frequencies, and verifying that a part sits exactly where you think it does in the spectrum.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                <span>What frequency should I use to layer a sub-bass?</span>
+                <i class="ri-arrow-down-s-line" aria-hidden="true"></i>
+            </div>
+            <div class="faq-answer">
+                <p>Match the sine to the musical note your bass is playing. A low E1 is 41.2 Hz, A1 is 55 Hz, and C2 is 65.41 Hz. Type the exact frequency into ToneSynth's number box, confirm the nearest-note readout, then tune your sub layer to the same pitch so it locks with the rest of the low end instead of clashing.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                <span>Can a tone generator help me train my ears?</span>
+                <i class="ri-arrow-down-s-line" aria-hidden="true"></i>
+            </div>
+            <div class="faq-answer">
+                <p>Yes. Play a known frequency such as 1 kHz, listen closely, then try to find it again later by ear before checking the readout. Repeating this with frequencies across the spectrum builds the kind of frequency recognition that makes EQ decisions faster and more deliberate.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                <span>How do I check my speakers or room with a sweep?</span>
+                <i class="ri-arrow-down-s-line" aria-hidden="true"></i>
+            </div>
+            <div class="faq-answer">
+                <p>Use ToneSynth's sweep mode with the Full Range 20 Hz to 20 kHz preset, or the Sub-Bass 20 to 200 Hz preset for the low end. Listen at a moderate volume for frequencies that jump out louder or vanish entirely. Those peaks and dips reveal room modes and speaker limits that color every mix decision you make.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="use-case-section">
+        <h2>Recommended gear</h2>
+        <div class="recommended-gear">
+            <h4><i class="ri-headphone-line" aria-hidden="true"></i> Monitoring you can trust</h4>
+            <p>Reference tones are only as honest as what you play them through. A flat pair of headphones and a clean interface keep your decisions grounded:</p>
+            <ul>
+                <li><a href="https://amazon.com/dp/B00HVLUR86?tag=audiotools20-20" target="_blank" rel="noopener">Audio-Technica ATH-M50x</a> — flat, closed-back studio headphones for critical listening</li>
+                <li><a href="https://amazon.com/dp/B07QR6Z1JB?tag=audiotools20-20" target="_blank" rel="noopener">Focusrite Scarlett 2i2</a> — clean entry-level interface to capture tones into your DAW</li>
+                <li><a href="https://www.amazon.com/s?k=studio+monitor+speakers&tag=audiotools20-20" target="_blank" rel="noopener">Browse studio monitors on Amazon</a> — for hearing sub-bass layers as they really sit</li>
+            </ul>
+            <p class="gear-note">Links may earn us a commission at no extra cost to you.</p>
+        </div>
+    </section>
+
+    <div class="cta-section">
+        <h2>Bring a reference into your next session</h2>
+        <p>Open the generator, pick a frequency, and put an honest tone next to your track.</p>
+        <a href="/#generator" class="cta-button"><i class="ri-sound-module-line" aria-hidden="true"></i> Open the generator</a>
+    </div>
+
+    <div class="cross-links">
+        <a href="/for-tuning" class="cross-link-card">
+            <i class="ri-music-line" aria-hidden="true"></i>
+            <div class="link-content">
+                <h4>Tones for tuning</h4>
+                <p>A steady reference pitch</p>
+            </div>
+        </a>
+        <a href="/applications" class="cross-link-card">
+            <i class="ri-tools-line" aria-hidden="true"></i>
+            <div class="link-content">
+                <h4>Practical applications</h4>
+                <p>Test tones for mixing and more</p>
+            </div>
+        </a>
+        <a href="/science" class="cross-link-card">
+            <i class="ri-flask-line" aria-hidden="true"></i>
+            <div class="link-content">
+                <h4>Science &amp; research</h4>
+                <p>How pitch and harmonics work</p>
+            </div>
+        </a>
+    </div>
+</div>
+{% endblock %}

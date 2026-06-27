@@ -1,0 +1,211 @@
+{% extends "base.html" %}
+
+{% block title %}Tone Generator for Studying - Steady Focus Tones | ToneSynth{% endblock %}
+
+{% block description %}Use a steady low-frequency tone to mask distractions and hold your focus while studying. Free tone generator with smooth attack and adjustable volume.{% endblock %}
+
+{% block meta_extra %}
+<meta property="og:title" content="Tone Generator for Studying - Steady Tones to Mask Distractions">
+<meta property="og:description" content="A steady pure tone can quiet a noisy room and keep you in flow while studying. Free tone generator with sine waves, smooth envelopes, and volume control.">
+<meta property="og:type" content="article">
+<link rel="canonical" href="https://tonesynth.com/for-studying">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Using a Steady Tone to Focus While Studying",
+  "description": "How a low, steady pure tone can mask distractions and support concentration during study sessions, with practical settings and honest caveats.",
+  "author": {"@type": "Organization", "name": "ToneSynth"},
+  "publisher": {"@type": "Organization", "name": "ToneSynth"}
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What frequency is best for studying?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "There is no magic number. Low frequencies, roughly 60 to 200 Hz, tend to sit in the background most comfortably, which is why they work well for masking. Higher tones draw more attention and grow tiring quickly. Start around 100 Hz and adjust to taste."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are study tones the same as binaural beats?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. A focus tone is simple sound masking, a steady pitch covering distractions. Binaural beats play slightly different frequencies in each ear to create a perceived pulse, a separate idea with its own mixed evidence. If you want to explore those, a dedicated tool like BinauralHQ handles them."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is it safe to listen to a tone for hours?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "At a low, comfortable volume, prolonged listening is fine, but follow the 60/60 guideline with headphones: no more than about 60 percent volume for 60 minutes at a stretch, then take a break. If the tone ever feels harsh or tiring, lower the volume or pick a lower frequency."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why use a tone instead of music?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Music carries lyrics, melody, and rhythm that your brain naturally tracks, and for detailed reading or writing that can compete with the task. A steady tone has none of that structure, so it masks noise without giving your attention something new to follow."
+      }
+    }
+  ]
+}
+</script>
+{% endblock %}
+
+{% block tagline %}A steady tone to hold your focus{% endblock %}
+
+{% block content %}
+<div class="use-case-container">
+    <div class="use-case-hero">
+        <h1>A tone generator for studying</h1>
+        <p class="hero-subtitle">A low, steady tone can smooth over a noisy room and give your attention something constant to settle into while you work.</p>
+        <a href="/#generator" class="cta-button"><i class="ri-play-circle-line" aria-hidden="true"></i> Start a focus tone</a>
+    </div>
+
+    <section class="use-case-section">
+        <h2>Why a steady tone helps you concentrate</h2>
+        <p>Distraction rarely comes from constant sound. It comes from <em>change</em>: a door closing, a phone buzzing, a conversation starting up. Your brain is wired to notice new sounds, so each interruption pulls your attention off the page. A steady tone fills the gaps with something predictable, so those sudden changes stand out less and you stay in flow longer.</p>
+        <p><strong>Unlike music, a pure tone has no lyrics, melody, or beat to follow.</strong> There is nothing to hum along to or anticipate, which is exactly why some people find it less distracting than a playlist when they are reading or solving problems. ToneSynth's sine wave gives you that smooth, even sound with no harmonic edges.</p>
+
+        <div class="benefit-grid">
+            <div class="benefit-card">
+                <i class="ri-volume-mute-line" aria-hidden="true"></i>
+                <h3>Mask interruptions</h3>
+                <p>A continuous tone softens the impact of sudden noises around you.</p>
+            </div>
+            <div class="benefit-card">
+                <i class="ri-mental-health-line" aria-hidden="true"></i>
+                <h3>No lyrics to chase</h3>
+                <p>A pure tone gives your ears something neutral, not a song to follow.</p>
+            </div>
+            <div class="benefit-card">
+                <i class="ri-timer-line" aria-hidden="true"></i>
+                <h3>A focus cue</h3>
+                <p>Starting the same tone each session becomes a signal that it is time to work.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="use-case-section">
+        <h2>How to set up a focus tone</h2>
+        <p>The goal is a sound you stop noticing within a minute. Low and quiet works best; a bright, loud tone becomes the distraction you were trying to avoid.</p>
+        <ul class="tips-list">
+            <li><strong>Stay on the sine wave.</strong> It is the smoothest option. Square and sawtooth waves are buzzier and more fatiguing for long sessions.</li>
+            <li><strong>Go low.</strong> Tap the 100 Hz preset or drag the frequency slider down somewhere between 60 Hz and 200 Hz. Low tones sit in the background more easily than high ones.</li>
+            <li><strong>Keep it quiet.</strong> Set the master volume low, just enough to cover small noises. You should be able to talk over it comfortably.</li>
+            <li><strong>Soften the start.</strong> Nudge the attack up so the tone fades in gently instead of clicking on, which is easier on the ears at the top of a session.</li>
+            <li><strong>Leave it running.</strong> Press Play and let it hold steady for the length of a study block, then stop it on your break.</li>
+        </ul>
+        <p>If a single tone feels too plain, the dual-tone mode lets you add a second oscillator a gentle interval away, such as an octave or a fifth, for a slightly richer drone. Keep the second voice quiet so the overall sound stays calm.</p>
+    </section>
+
+    <section class="use-case-section">
+        <h2>Tones, noise, or music: which to pick</h2>
+        <p>No single sound works for everyone, and the research on background sound and focus is genuinely mixed. Treat this as a menu to experiment with.</p>
+        <ul class="tips-list">
+            <li><strong>Pure tone:</strong> the most neutral option, good when even instrumental music pulls your attention. Best kept low and quiet.</li>
+            <li><strong>Broadband noise:</strong> white, pink, or brown noise masks a wider range of sounds than a single tone. A sibling tool, <a href="https://focushum.com" target="_blank" rel="noopener">Focus Hum</a>, is built for this.</li>
+            <li><strong>Music:</strong> motivating for routine tasks, but lyrics and strong melodies can compete with reading and writing.</li>
+            <li><strong>Silence:</strong> ideal if your space is already quiet. Sound masking only helps when there is something to mask.</li>
+        </ul>
+    </section>
+
+    <section class="use-case-section">
+        <h2>Frequently asked questions</h2>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                <span>What frequency is best for studying?</span>
+                <i class="ri-arrow-down-s-line" aria-hidden="true"></i>
+            </div>
+            <div class="faq-answer">
+                <p>There is no magic number. Low frequencies, roughly 60 to 200 Hz, tend to sit in the background most comfortably, which is why they work well for masking. Higher tones draw more attention and grow tiring quickly. Start around 100 Hz and adjust to taste.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                <span>Are study tones the same as binaural beats?</span>
+                <i class="ri-arrow-down-s-line" aria-hidden="true"></i>
+            </div>
+            <div class="faq-answer">
+                <p>No. A focus tone is simple sound masking, a steady pitch covering distractions. Binaural beats play slightly different frequencies in each ear to create a perceived pulse, a separate idea with its own mixed evidence. If you want to explore those, a dedicated tool like BinauralHQ handles them.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                <span>Is it safe to listen to a tone for hours?</span>
+                <i class="ri-arrow-down-s-line" aria-hidden="true"></i>
+            </div>
+            <div class="faq-answer">
+                <p>At a low, comfortable volume, prolonged listening is fine, but follow the 60/60 guideline with headphones: no more than about 60 percent volume for 60 minutes at a stretch, then take a break. If the tone ever feels harsh or tiring, lower the volume or pick a lower frequency.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                <span>Why use a tone instead of music?</span>
+                <i class="ri-arrow-down-s-line" aria-hidden="true"></i>
+            </div>
+            <div class="faq-answer">
+                <p>Music carries lyrics, melody, and rhythm that your brain naturally tracks, and for detailed reading or writing that can compete with the task. A steady tone has none of that structure, so it masks noise without giving your attention something new to follow.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="use-case-section">
+        <h2>Recommended gear</h2>
+        <div class="recommended-gear">
+            <h4><i class="ri-headphone-line" aria-hidden="true"></i> Headphones for long sessions</h4>
+            <p>A comfortable pair keeps a focus tone gently in your ears and helps shut out the room during a study block:</p>
+            <ul>
+                <li><a href="https://amazon.com/dp/B09XS7JWHH?tag=audiotools20-20" target="_blank" rel="noopener">Sony WH-1000XM5</a> — noise cancelling that knocks down background distractions</li>
+                <li><a href="https://amazon.com/dp/B00HVLUR86?tag=audiotools20-20" target="_blank" rel="noopener">Audio-Technica ATH-M50x</a> — comfortable closed-back with a smooth, even tone</li>
+            </ul>
+            <p class="gear-note">Links may earn us a commission at no extra cost to you.</p>
+        </div>
+    </section>
+
+    <div class="cta-section">
+        <h2>Settle in and focus</h2>
+        <p>Drop the frequency low, keep the volume gentle, and let a steady tone hold the room.</p>
+        <a href="/#generator" class="cta-button"><i class="ri-play-circle-line" aria-hidden="true"></i> Start a focus tone</a>
+    </div>
+
+    <div class="cross-links">
+        <a href="/for-tuning" class="cross-link-card">
+            <i class="ri-music-line" aria-hidden="true"></i>
+            <div class="link-content">
+                <h4>Tones for tuning</h4>
+                <p>A steady reference pitch</p>
+            </div>
+        </a>
+        <a href="/faq" class="cross-link-card">
+            <i class="ri-question-answer-line" aria-hidden="true"></i>
+            <div class="link-content">
+                <h4>FAQ</h4>
+                <p>Common questions about tones</p>
+            </div>
+        </a>
+        <a href="https://focushum.com" class="cross-link-card" target="_blank" rel="noopener">
+            <i class="ri-sound-module-line" aria-hidden="true"></i>
+            <div class="link-content">
+                <h4>Focus Hum</h4>
+                <p>White, pink, and brown noise</p>
+            </div>
+        </a>
+    </div>
+</div>
+{% endblock %}

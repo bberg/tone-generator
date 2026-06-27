@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ToneSynth - Online Tone Synthesizer | Sine, Square, Sawtooth & Triangle Waves</title>
-    <meta name="description" content="ToneSynth is a free online tone synthesizer with sine, square, sawtooth, and triangle waveforms. Frequency sweep, hearing test mode, instrument tuning presets. 20Hz to 20kHz precision control.">
+    <title>ToneSynth - Online Tone Synthesizer & Frequency Generator</title>
+    <meta name="description" content="Free tone synthesizer with sine, square, sawtooth, and triangle waves. Run frequency sweeps, test your hearing range, and tune instruments from 20 Hz to 20 kHz.">
     <meta name="keywords" content="tonesynth, tone synth, tone synthesizer, frequency generator, sine wave, square wave, sawtooth wave, triangle wave, audio test, tuning fork, A440, hearing test, frequency sweep, guitar tuner, instrument tuning">
 
     <!-- Canonical URL -->
@@ -45,6 +45,9 @@
 
     <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon.svg') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
 
@@ -62,7 +65,7 @@
         <header class="page-header">
             <div class="header-content">
                 <h1>ToneSynth</h1>
-                <p class="tagline">Online tone synthesizer with pure waveforms</p>
+                <p class="tagline">Play any pure tone from 20 Hz to 20 kHz, right in your browser. Pick a waveform, set a frequency, and press Play, no install, no sign-up.</p>
             </div>
             <div class="header-badges">
                 <span class="header-badge"><i class="ri-music-2-line"></i> Tuning</span>
@@ -76,6 +79,16 @@
             <a href="#sweep" class="nav-link"><i class="ri-line-chart-line"></i> Sweep</a>
             <a href="#hearing-test" class="nav-link"><i class="ri-ear-line"></i> Hearing Test</a>
             <a href="#presets" class="nav-link"><i class="ri-bookmark-line"></i> Presets</a>
+            <div class="nav-dropdown">
+                <a href="#" class="nav-link dropdown-trigger"><i class="ri-lightbulb-line"></i> Use Cases <i class="ri-arrow-down-s-line dropdown-arrow"></i></a>
+                <div class="dropdown-menu">
+                    <a href="/for-tuning"><i class="ri-music-line"></i> Tuning Instruments</a>
+                    <a href="/for-music-production"><i class="ri-sound-module-line"></i> Music Production</a>
+                    <a href="/for-tinnitus"><i class="ri-volume-vibrate-line"></i> Tinnitus & Sound Therapy</a>
+                    <a href="/for-hearing-test"><i class="ri-ear-line"></i> At-Home Hearing Test</a>
+                    <a href="/for-studying"><i class="ri-book-open-line"></i> Focus While Studying</a>
+                </div>
+            </div>
             <div class="nav-dropdown">
                 <a href="#" class="nav-link dropdown-trigger"><i class="ri-information-line"></i> Info <i class="ri-arrow-down-s-line dropdown-arrow"></i></a>
                 <div class="dropdown-menu">
@@ -271,7 +284,7 @@
                     <p><strong>Disclaimer:</strong> This is not a medical hearing test. Results are for informational purposes only and cannot replace professional audiometry. If you have concerns about your hearing, please consult an audiologist or ENT specialist.</p>
                 </div>
 
-                <p class="intro-text">Test your ability to hear different frequencies. For best results, use quality headphones in a quiet environment. Start at a comfortable volume.</p>
+                <p class="intro-text">Test your ability to hear different frequencies. For best results, use quality headphones in a quiet environment. Start at a comfortable volume. For a full walkthrough, see our guide to <a href="/for-hearing-test">testing your hearing range at home</a>.</p>
 
                 <div class="hearing-test-controls">
                     <div class="hearing-test-row">
@@ -429,7 +442,7 @@
         <section class="content-section presets-section" id="tuning-presets">
             <article class="content-article">
                 <h2>Instrument Tuning Reference</h2>
-                <p class="intro-text">Standard reference frequencies for instrument tuning, audio calibration, and testing. Click any frequency to play it instantly.</p>
+                <p class="intro-text">Standard reference frequencies for instrument tuning, audio calibration, and testing. Click any frequency to play it instantly. New to tuning by ear? Our guide to <a href="/for-tuning">tuning an instrument against a reference tone</a> explains how to listen for beats.</p>
 
                 <div class="info-grid">
                     <div class="info-card preset-card">
@@ -640,7 +653,7 @@
 
                 <h4>Binaural Phenomena</h4>
                 <ul class="feature-list">
-                    <li><strong>Binaural beats:</strong> When slightly different frequencies are presented to each ear, the brain perceives a "beat" at the difference frequency. First described by Heinrich Wilhelm Dove in 1839</li>
+                    <li><strong>Binaural beats:</strong> When slightly different frequencies are presented to each ear, the brain perceives a "beat" at the difference frequency. First described by Heinrich Wilhelm Dove in 1839. You can recreate this here with the dual-tone mode, or use a dedicated tool like <a href="https://binauralhq.com" target="_blank" rel="noopener">BinauralHQ</a> for ready-made binaural sessions</li>
                     <li><strong>Sound localization:</strong> We locate sounds using interaural time differences (ITD) for low frequencies and interaural level differences (ILD) for high frequencies</li>
                     <li><strong>Precedence effect:</strong> The first-arriving sound determines perceived direction, with reflections contributing to spaciousness</li>
                 </ul>
@@ -714,6 +727,7 @@
                     <li><strong>Notched music therapy:</strong> Research suggests that listening to music with the tinnitus frequency removed may provide relief</li>
                     <li><strong>Masking:</strong> Playing sounds at or near the tinnitus frequency can provide temporary relief</li>
                 </ul>
+                <p>For a practical, step-by-step approach, see our guide to <a href="/for-tinnitus">using a tone for tinnitus matching and sound therapy</a>, or learn how a steady tone can <a href="/for-studying">help you focus while studying</a>. If you prefer continuous background sound over a fixed tone, a softer option is <a href="https://focushum.com" target="_blank" rel="noopener">Focus Hum</a> for steady ambient hum.</p>
 
                 <h3>References and Further Reading</h3>
                 <ul class="feature-list">
@@ -739,16 +753,26 @@
                     <a href="/traditions">Traditions & Tuning</a>
                     <a href="/faq">FAQ</a>
                 </div>
+                <div class="footer-links">
+                    <h4>Use Cases</h4>
+                    <a href="/for-tuning">Tuning Instruments</a>
+                    <a href="/for-music-production">Music Production</a>
+                    <a href="/for-tinnitus">Tinnitus & Sound Therapy</a>
+                    <a href="/for-hearing-test">At-Home Hearing Test</a>
+                    <a href="/for-studying">Focus While Studying</a>
+                </div>
                 <div class="footer-related">
-                    <h4>Related Tools</h4>
-                    <a href="https://sirengenerator.com" target="_blank">Siren Generator</a>
-                    <a href="https://focushum.com" target="_blank">Noise Generator</a>
-                    <a href="https://binauralhq.com" target="_blank">Binaural Beats</a>
-                    <a href="https://omtones.com" target="_blank">Drone Generator</a>
+                    <h4>Audio Tools Network</h4>
+                    <a href="https://sirengenerator.com" target="_blank" rel="noopener">Siren Generator</a>
+                    <a href="https://focushum.com" target="_blank" rel="noopener">Focus Hum</a>
+                    <a href="https://binauralhq.com" target="_blank" rel="noopener">BinauralHQ</a>
+                    <a href="https://omtones.com" target="_blank" rel="noopener">OmTones</a>
+                    <a href="https://testtones.com" target="_blank" rel="noopener">TestTones</a>
+                    <a href="https://metronomely.com" target="_blank" rel="noopener">Metronomely</a>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 ToneSynth. Part of the Audio Tools Network. For educational purposes only.</p>
+                <p>&copy; 2025 ToneSynth. Part of the Audio Tools Network. For educational purposes only.</p>
             </div>
         </footer>
     </div>

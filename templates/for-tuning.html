@@ -1,0 +1,210 @@
+{% extends "base.html" %}
+
+{% block title %}Tone Generator for Tuning - 440 Hz Reference | ToneSynth{% endblock %}
+
+{% block description %}Tune any instrument by ear with a free 440 Hz reference tone. Pick A440, 432 Hz, or per-string presets for guitar, violin, and more, and zero the beats.{% endblock %}
+
+{% block meta_extra %}
+<meta property="og:title" content="Tone Generator for Tuning - 440 Hz Reference Pitch for Any Instrument">
+<meta property="og:description" content="Tune by ear against a stable reference pitch. A440, 432 Hz, baroque 415 Hz, and per-string presets for guitar, bass, violin, ukulele, and more.">
+<meta property="og:type" content="article">
+<link rel="canonical" href="https://tonesynth.com/for-tuning">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Using a Tone Generator to Tune Instruments by Ear",
+  "description": "How to tune guitar, bass, violin, and other instruments against a stable reference pitch using beats, plus the pitch standards from A440 to baroque 415 Hz.",
+  "author": {"@type": "Organization", "name": "ToneSynth"},
+  "publisher": {"@type": "Organization", "name": "ToneSynth"}
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What frequency should I tune my guitar to?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Standard tuning references A4 at 440 Hz, which puts the open strings at E2 82.41 Hz, A2 110 Hz, D3 146.83 Hz, G3 196 Hz, B3 246.94 Hz, and E4 329.63 Hz. ToneSynth has a one-tap preset for each of those strings."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do beats help me tune?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "When two pitches are close but not identical, they interfere and create a pulsing change in loudness. The beat rate equals the difference in hertz, so 440 Hz against 443 Hz pulses three times a second. As you tune toward the reference, the beats slow and then stop, which is the moment you are in tune."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I tune a drop-tuned or 5-string instrument?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. ToneSynth includes presets for Drop D guitar, 4- and 5-string bass, ukulele, and the orchestral strings. If you need an unusual note, type the exact frequency into the number box and the nearest-note display will confirm the pitch."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is tuning by ear as accurate as a clip-on tuner?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "With practice, yes, and often better for intervals. A clip-on tuner checks one string at a time against equal temperament; tuning to beats lets you hear how strings relate to each other. Many players use both, a tuner for speed and their ear for the final polish."
+      }
+    }
+  ]
+}
+</script>
+{% endblock %}
+
+{% block tagline %}A stable reference pitch for tuning by ear{% endblock %}
+
+{% block content %}
+<div class="use-case-container">
+    <div class="use-case-hero">
+        <h1>A tone generator for tuning</h1>
+        <p class="hero-subtitle">Play a rock-steady 440 Hz A, or any reference pitch you need, and tune your instrument by ear the way pros have for a century.</p>
+        <a href="/#presets" class="cta-button"><i class="ri-music-line" aria-hidden="true"></i> Play a reference tone</a>
+    </div>
+
+    <section class="use-case-section">
+        <h2>Why tune against a reference tone</h2>
+        <p>An automatic clip-on tuner tells you a string is sharp or flat, but it never teaches your ear what "in tune" actually sounds like. Tuning against a steady reference pitch does. You learn to hear the wobble between two notes and to make it vanish, which is the skill behind every well-tuned ensemble.</p>
+        <p><strong>A pure sine wave is the cleanest possible reference.</strong> With no harmonics getting in the way, it is easy to hear the slow pulsing, called beats, that appears when your string is close but not quite matched. Slow the beats to a stop and you are in tune.</p>
+
+        <div class="benefit-grid">
+            <div class="benefit-card">
+                <i class="ri-music-2-line" aria-hidden="true"></i>
+                <h3>Any standard</h3>
+                <p>A440 by default, plus 442 Hz, 443 Hz, baroque 415 Hz, and 432 Hz at one tap.</p>
+            </div>
+            <div class="benefit-card">
+                <i class="ri-guitar-line" aria-hidden="true"></i>
+                <h3>Per-string presets</h3>
+                <p>Guitar, bass, ukulele, violin, viola, and cello presets play each open string instantly.</p>
+            </div>
+            <div class="benefit-card">
+                <i class="ri-pulse-line" aria-hidden="true"></i>
+                <h3>Beat-free tuning</h3>
+                <p>Match the pitch until the pulsing stops to train a genuinely accurate ear.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="use-case-section">
+        <h2>How to tune your instrument with ToneSynth</h2>
+        <p>The presets do the math, so you can focus on listening. Here is the routine for a guitar in standard tuning, and it adapts to any instrument.</p>
+        <ul class="tips-list">
+            <li><strong>Pick your reference.</strong> Tap the A440 preset, or open the Instrument tuning reference and choose a per-string frequency such as E2 at 82.41 Hz.</li>
+            <li><strong>Play and pluck together.</strong> Press Play, then pluck the matching string so both sound at once.</li>
+            <li><strong>Listen for the beats.</strong> If you hear a slow <em>wah-wah-wah</em> pulsing, the string is close but off. The faster the pulse, the further out you are.</li>
+            <li><strong>Turn the peg slowly.</strong> Adjust until the pulsing slows down and stops. A steady, smooth blend means you have matched the pitch.</li>
+            <li><strong>Move to the next string.</strong> Tap the next per-string preset and repeat. Re-check the first string at the end, since tuning one string can shift the neck slightly.</li>
+        </ul>
+        <p>For a single quick reference you can also stay on A440 and tune the rest of the instrument relative to that note, the way an orchestra tunes to the oboe's A.</p>
+    </section>
+
+    <section class="use-case-section">
+        <h2>Which pitch standard should you use?</h2>
+        <p>Concert pitch has never been truly universal. ToneSynth includes the common standards so you can match whoever you are playing with.</p>
+        <ul class="tips-list">
+            <li><strong>440 Hz (A4):</strong> The ISO 16 international standard since 1955 and the safe default for most playing.</li>
+            <li><strong>442 to 443 Hz:</strong> Slightly brighter, favored by many European orchestras and some German and Viennese ensembles.</li>
+            <li><strong>415 Hz:</strong> Baroque pitch, roughly a semitone below modern A, used by period-instrument groups.</li>
+            <li><strong>432 Hz:</strong> A softer-sounding alternative some musicians prefer; there is no scientific evidence it is more "natural," but it is a valid artistic choice.</li>
+        </ul>
+    </section>
+
+    <section class="use-case-section">
+        <h2>Frequently asked questions</h2>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                <span>What frequency should I tune my guitar to?</span>
+                <i class="ri-arrow-down-s-line" aria-hidden="true"></i>
+            </div>
+            <div class="faq-answer">
+                <p>Standard tuning references A4 at 440 Hz, which puts the open strings at E2 82.41 Hz, A2 110 Hz, D3 146.83 Hz, G3 196 Hz, B3 246.94 Hz, and E4 329.63 Hz. ToneSynth has a one-tap preset for each of those strings.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                <span>How do beats help me tune?</span>
+                <i class="ri-arrow-down-s-line" aria-hidden="true"></i>
+            </div>
+            <div class="faq-answer">
+                <p>When two pitches are close but not identical, they interfere and create a pulsing change in loudness. The beat rate equals the difference in hertz, so 440 Hz against 443 Hz pulses three times a second. As you tune toward the reference, the beats slow and then stop, which is the moment you are in tune.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                <span>Can I tune a drop-tuned or 5-string instrument?</span>
+                <i class="ri-arrow-down-s-line" aria-hidden="true"></i>
+            </div>
+            <div class="faq-answer">
+                <p>Yes. ToneSynth includes presets for Drop D guitar, 4- and 5-string bass, ukulele, and the orchestral strings. If you need an unusual note, type the exact frequency into the number box and the nearest-note display will confirm the pitch.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                <span>Is tuning by ear as accurate as a clip-on tuner?</span>
+                <i class="ri-arrow-down-s-line" aria-hidden="true"></i>
+            </div>
+            <div class="faq-answer">
+                <p>With practice, yes, and often better for intervals. A clip-on tuner checks one string at a time against equal temperament; tuning to beats lets you hear how strings relate to each other. Many players use both, a tuner for speed and their ear for the final polish.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="use-case-section">
+        <h2>Recommended gear</h2>
+        <div class="recommended-gear">
+            <h4><i class="ri-guitar-line" aria-hidden="true"></i> A clip-on tuner for the road</h4>
+            <p>Tuning by ear is the skill worth building, but a clip-on tuner is handy for a fast check on a loud stage or a quick reference between songs:</p>
+            <ul>
+                <li><a href="https://www.amazon.com/s?k=clip-on+chromatic+tuner&tag=audiotools20-20" target="_blank" rel="noopener">Browse clip-on tuners on Amazon</a> — chromatic models work for guitar, bass, violin, and more</li>
+            </ul>
+            <p class="gear-note">Links may earn us a commission at no extra cost to you.</p>
+        </div>
+    </section>
+
+    <div class="cta-section">
+        <h2>Ready to tune?</h2>
+        <p>Tap A440 or a per-string preset, press Play, and bring your instrument into tune.</p>
+        <a href="/#tuning-presets" class="cta-button"><i class="ri-music-line" aria-hidden="true"></i> Open tuning presets</a>
+    </div>
+
+    <div class="cross-links">
+        <a href="/for-hearing-test" class="cross-link-card">
+            <i class="ri-ear-line" aria-hidden="true"></i>
+            <div class="link-content">
+                <h4>At-home hearing test</h4>
+                <p>Check your frequency range</p>
+            </div>
+        </a>
+        <a href="/traditions" class="cross-link-card">
+            <i class="ri-ancient-gate-line" aria-hidden="true"></i>
+            <div class="link-content">
+                <h4>Traditions &amp; tuning</h4>
+                <p>The history of concert pitch</p>
+            </div>
+        </a>
+        <a href="https://metronomely.com" class="cross-link-card" target="_blank" rel="noopener">
+            <i class="ri-timer-line" aria-hidden="true"></i>
+            <div class="link-content">
+                <h4>Metronomely</h4>
+                <p>Keep time while you practice</p>
+            </div>
+        </a>
+    </div>
+</div>
+{% endblock %}

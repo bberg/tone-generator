@@ -1,0 +1,218 @@
+{% extends "base.html" %}
+
+{% block title %}Hearing Test Tone Generator - Test Your Range | ToneSynth{% endblock %}
+
+{% block description %}Test your hearing range at home with a free tone generator. Play standard audiometric frequencies from 125 Hz to 18 kHz and find your high-frequency limit.{% endblock %}
+
+{% block meta_extra %}
+<meta property="og:title" content="Tone Generator for Hearing Tests - Test Your Frequency Range at Home">
+<meta property="og:description" content="Check your hearing range with pure tones from 125 Hz to 18 kHz. A free at-home screening tool with per-ear testing and age reference charts.">
+<meta property="og:type" content="article">
+<link rel="canonical" href="https://tonesynth.com/for-hearing-test">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How to Test Your Hearing Range at Home With a Tone Generator",
+  "description": "A practical guide to screening your own frequency range using pure tones, standard audiometric frequencies, and what your high-frequency limit says about your hearing.",
+  "author": {"@type": "Organization", "name": "ToneSynth"},
+  "publisher": {"@type": "Organization", "name": "ToneSynth"}
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How accurate is an online hearing test?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It is a useful screening, not a clinical measurement. Your headphones, sound card, and room all affect what you hear, and there is no calibration to a known sound-pressure level. Use it to spot changes or asymmetry, then confirm anything concerning with an audiologist."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the 4 kHz notch?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The ear canal resonates around 3 to 4 kHz, which amplifies sound there and also makes that region more vulnerable to noise damage. A dip in hearing around 4 kHz, while neighboring frequencies stay strong, is a classic sign of noise-induced hearing loss."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why can I not hear above 15 kHz anymore?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "High-frequency hearing fades with age for everyone, often dropping below 15 kHz by your forties. Past noise exposure speeds it up. It is also possible your speakers or headphones simply do not reproduce those frequencies, so check the equipment before assuming it is your ears."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I use headphones or speakers?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Headphones, ideally wired ones. They isolate each ear so you can test sides separately and avoid room reflections that color the sound. Speakers make per-ear testing impossible and add the room's own peaks and dips to your results."
+      }
+    }
+  ]
+}
+</script>
+{% endblock %}
+
+{% block tagline %}Check your hearing range with pure tones{% endblock %}
+
+{% block content %}
+<div class="use-case-container">
+    <div class="use-case-hero">
+        <h1>A tone generator for hearing tests</h1>
+        <p class="hero-subtitle">Find your high-frequency limit and screen your range across the audible spectrum, one clean pure tone at a time.</p>
+        <a href="/#hearing-test" class="cta-button"><i class="ri-ear-line" aria-hidden="true"></i> Start the hearing test</a>
+    </div>
+
+    <section class="use-case-section">
+        <div class="disclaimer-box">
+            <i class="ri-information-line" aria-hidden="true"></i>
+            <p><strong>This is a screening, not a diagnosis.</strong> An at-home tone test cannot replace professional audiometry in a sound-treated room. It depends on your headphones and your surroundings. If you notice hearing loss, ringing, or a difference between your ears, see an audiologist. Sudden hearing loss is a medical emergency.</p>
+        </div>
+
+        <h2>What a hearing range test tells you</h2>
+        <p>Healthy young adults typically hear from about 20 Hz to 20,000 Hz. The top of that range is the first thing to fade with age, a normal process called presbycusis, and loud-noise exposure can carve out a dip around 4 kHz. A tone generator lets you walk through the spectrum one frequency at a time and notice where sounds get faint or disappear.</p>
+        <p><strong>Pure sine tones are exactly what audiometry uses</strong> because they test one frequency in isolation. ToneSynth plays the same standard audiometric frequencies an audiologist screens, so you get a realistic picture of your own range at home.</p>
+
+        <div class="benefit-grid">
+            <div class="benefit-card">
+                <i class="ri-equalizer-line" aria-hidden="true"></i>
+                <h3>Standard frequencies</h3>
+                <p>Test the audiometric set from 125 Hz up to 18 kHz with one tap each.</p>
+            </div>
+            <div class="benefit-card">
+                <i class="ri-headphone-line" aria-hidden="true"></i>
+                <h3>Per-ear testing</h3>
+                <p>Check the left, right, or both ears to spot a difference between sides.</p>
+            </div>
+            <div class="benefit-card">
+                <i class="ri-line-chart-line" aria-hidden="true"></i>
+                <h3>Find your ceiling</h3>
+                <p>Sweep the high end to pinpoint the highest frequency you can still hear.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="use-case-section">
+        <h2>How to test your hearing with ToneSynth</h2>
+        <p>Set up well first, because the result is only as good as your conditions. Use wired headphones if you can, sit somewhere quiet, and start at a low volume.</p>
+        <ul class="tips-list">
+            <li><strong>Open the hearing test.</strong> Use the standard audiometric frequencies grid, which runs from 125 Hz to 18 kHz.</li>
+            <li><strong>Set a comfortable level.</strong> Play a midrange tone such as 1 kHz and turn the master volume up only until it is clearly but gently audible. Do not change the volume after this.</li>
+            <li><strong>Pick an ear.</strong> Choose Both, Left, or Right so you can compare your two sides separately.</li>
+            <li><strong>Work upward.</strong> Tap each frequency in turn and mark whether you can hear it. Pay attention near the top, where most people lose sensitivity first.</li>
+            <li><strong>Find your limit.</strong> For a finer reading, switch to the main generator and drag the frequency slider up past 14 kHz, watching for the point where the tone fades to silence.</li>
+        </ul>
+        <p>Keep the volume fixed throughout so you are testing your ears, not your volume knob. Higher frequencies often need to be slightly louder to perceive, which is normal, but resist cranking the dial.</p>
+    </section>
+
+    <section class="use-case-section">
+        <h2>Reading your results by age</h2>
+        <p>High-frequency hearing declines gradually for almost everyone. These are typical ranges, not strict cutoffs, and your headphones may roll off before your ears do.</p>
+        <ul class="tips-list">
+            <li><strong>Under 25:</strong> often up to 17 to 20 kHz.</li>
+            <li><strong>25 to 35:</strong> often up to 15 to 17 kHz.</li>
+            <li><strong>35 to 50:</strong> often up to 12 to 15 kHz.</li>
+            <li><strong>50 to 65:</strong> often up to 10 to 12 kHz.</li>
+            <li><strong>Over 65:</strong> often up to 8 to 10 kHz.</li>
+        </ul>
+        <p>If one ear clearly hears a frequency the other cannot, or if you have a notch around 4 kHz, that is worth mentioning to a professional. Asymmetry between ears is one of the more meaningful things a simple test can flag.</p>
+    </section>
+
+    <section class="use-case-section">
+        <h2>Frequently asked questions</h2>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                <span>How accurate is an online hearing test?</span>
+                <i class="ri-arrow-down-s-line" aria-hidden="true"></i>
+            </div>
+            <div class="faq-answer">
+                <p>It is a useful screening, not a clinical measurement. Your headphones, sound card, and room all affect what you hear, and there is no calibration to a known sound-pressure level. Use it to spot changes or asymmetry, then confirm anything concerning with an audiologist.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                <span>What is the 4 kHz notch?</span>
+                <i class="ri-arrow-down-s-line" aria-hidden="true"></i>
+            </div>
+            <div class="faq-answer">
+                <p>The ear canal resonates around 3 to 4 kHz, which amplifies sound there and also makes that region more vulnerable to noise damage. A dip in hearing around 4 kHz, while neighboring frequencies stay strong, is a classic sign of noise-induced hearing loss.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                <span>Why can I not hear above 15 kHz anymore?</span>
+                <i class="ri-arrow-down-s-line" aria-hidden="true"></i>
+            </div>
+            <div class="faq-answer">
+                <p>High-frequency hearing fades with age for everyone, often dropping below 15 kHz by your forties. Past noise exposure speeds it up. It is also possible your speakers or headphones simply do not reproduce those frequencies, so check the equipment before assuming it is your ears.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                <span>Should I use headphones or speakers?</span>
+                <i class="ri-arrow-down-s-line" aria-hidden="true"></i>
+            </div>
+            <div class="faq-answer">
+                <p>Headphones, ideally wired ones. They isolate each ear so you can test sides separately and avoid room reflections that color the sound. Speakers make per-ear testing impossible and add the room's own peaks and dips to your results.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="use-case-section">
+        <h2>Recommended gear</h2>
+        <div class="recommended-gear">
+            <h4><i class="ri-headphone-line" aria-hidden="true"></i> Wired over-ear headphones</h4>
+            <p>A clean, wired pair isolates each ear and avoids room reflections, which makes per-ear screening far more reliable:</p>
+            <ul>
+                <li><a href="https://amazon.com/dp/B00HVLUR86?tag=audiotools20-20" target="_blank" rel="noopener">Audio-Technica ATH-M50x</a> — wired closed-back with a flat, even response across the range</li>
+                <li><a href="https://amazon.com/dp/B00001WRSJ?tag=audiotools20-20" target="_blank" rel="noopener">Sennheiser HD 600</a> — reference open-back for revealing faint high frequencies</li>
+            </ul>
+            <p class="gear-note">Links may earn us a commission at no extra cost to you.</p>
+        </div>
+    </section>
+
+    <div class="cta-section">
+        <h2>Check your range</h2>
+        <p>Put on headphones, set a steady volume, and walk through the audiometric frequencies.</p>
+        <a href="/#hearing-test" class="cta-button"><i class="ri-ear-line" aria-hidden="true"></i> Open the hearing test</a>
+    </div>
+
+    <div class="cross-links">
+        <a href="/for-tinnitus" class="cross-link-card">
+            <i class="ri-volume-vibrate-line" aria-hidden="true"></i>
+            <div class="link-content">
+                <h4>Tones for tinnitus</h4>
+                <p>Match the pitch of your ringing</p>
+            </div>
+        </a>
+        <a href="/science" class="cross-link-card">
+            <i class="ri-flask-line" aria-hidden="true"></i>
+            <div class="link-content">
+                <h4>Science &amp; research</h4>
+                <p>How hearing works and ages</p>
+            </div>
+        </a>
+        <a href="https://testtones.com" class="cross-link-card" target="_blank" rel="noopener">
+            <i class="ri-equalizer-line" aria-hidden="true"></i>
+            <div class="link-content">
+                <h4>TestTones</h4>
+                <p>Audio test and calibration tones</p>
+            </div>
+        </a>
+    </div>
+</div>
+{% endblock %}
