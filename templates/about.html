@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}About ToneSynth - The Pure-Tone & Waveform Generator{% endblock %}
+
+{% block description %}ToneSynth is a free, browser-based pure-tone and waveform generator. Learn what it does, who it's for, and how it fits into the Audio Tools Network.{% endblock %}
+
+{% block meta_extra %}
+<link rel="canonical" href="https://tonesynth.com/about">
+{% endblock %}
+
+{% block tagline %}What ToneSynth is and why it exists{% endblock %}
+
+{% block content %}
+<div class="research-hero">
+    <h1>About ToneSynth</h1>
+    <p class="subtitle">A precise, no-fuss tone generator that runs entirely in your browser.</p>
+</div>
+
+<div class="research-content">
+    <section class="research-section">
+        <p>ToneSynth started from a simple frustration: most online "tone generators" either bury a single sine wave under pop-ups, cap you at a handful of fixed frequencies, or push you toward a paid app to do something a browser can already do. The Web Audio API in every modern browser is perfectly capable of producing a clean, stable tone at any frequency you ask for. ToneSynth is built around that idea, nothing more complicated.</p>
+
+        <p>The tool lets you play any pure tone from 20 Hz to 20 kHz and choose between sine, square, sawtooth, and triangle waveforms. A sine wave gives you a single clean frequency with no harmonics, which is what you want for tuning, hearing checks, and calibration. The square, sawtooth, and triangle options add the harmonic content that makes a tone sound bright, buzzy, or hollow, which is useful when you're learning how timbre works or testing how gear reproduces a richer signal. You can also run a frequency sweep to glide smoothly across a range, which is the fastest way to find a speaker rattle, spot a room resonance, or map out where your own hearing rolls off at the top end.</p>
+
+        <p>ToneSynth is for musicians tuning by ear against a steady A=440 reference, for audio hobbyists checking headphones and monitors, for students working through the physics of waves and the basics of psychoacoustics, and for anyone curious about the upper limit of their own hearing. It is deliberately plain. There is no sign-up, no download, and no account. Everything is generated locally in your browser, so the audio never travels anywhere and nothing about your session is stored.</p>
+
+        <p>We keep the tool free and lean on a small amount of advertising and the occasional affiliate link to cover hosting. That trade-off lets the generator stay open to everyone without a paywall. Alongside the generator we've written guides on tuning, hearing tests, studying with sound, and the science behind pitch perception, because a tone is far more interesting once you understand what your ears and brain are actually doing with it.</p>
+
+        <p>ToneSynth is part of the Audio Tools Network, a small family of focused, single-purpose audio sites. If you need something more specialized, try <a href="https://testtones.com" target="_blank" rel="noopener">TestTones</a> for speaker and headphone test signals, <a href="https://binauralhq.com" target="_blank" rel="noopener">BinauralHQ</a> for binaural beats, or <a href="https://metronomely.com" target="_blank" rel="noopener">Metronomely</a> for a clean metronome. Each one does a single job and tries to do it well.</p>
+
+        <p>Questions, bug reports, or feature ideas are genuinely welcome. You can reach us any time on the <a href="/contact">contact page</a>.</p>
+    </section>
+</div>
+{% endblock %}

@@ -45,6 +45,22 @@ def for_studying():
 def for_music_production():
     return render_template('for-music-production.html', active_page='for-music-production')
 
+@app.route('/about')
+def about():
+    return render_template('about.html', active_page='about')
+
+@app.route('/contact')
+def contact():
+    return render_template('contact.html', active_page='contact')
+
+@app.route('/privacy')
+def privacy():
+    return render_template('privacy.html', active_page='privacy')
+
+@app.route('/terms')
+def terms():
+    return render_template('terms.html', active_page='terms')
+
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404
@@ -72,6 +88,12 @@ def sitemap():
         <lastmod>{today}</lastmod>
         <priority>1.0</priority>
         <changefreq>weekly</changefreq>
+    </url>
+    <url>
+        <loc>https://tonesynth.com/about</loc>
+        <lastmod>{today}</lastmod>
+        <priority>0.5</priority>
+        <changefreq>monthly</changefreq>
     </url>
     <url>
         <loc>https://tonesynth.com/science</loc>
