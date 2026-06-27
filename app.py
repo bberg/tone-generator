@@ -45,6 +45,10 @@ def for_studying():
 def for_music_production():
     return render_template('for-music-production.html', active_page='for-music-production')
 
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
+
 @app.route('/favicon.ico')
 def favicon():
     return send_from_directory(os.path.join(app.root_path, 'static'),
@@ -72,55 +76,55 @@ def sitemap():
     <url>
         <loc>https://tonesynth.com/science</loc>
         <lastmod>{today}</lastmod>
-        <priority>0.9</priority>
+        <priority>0.7</priority>
         <changefreq>monthly</changefreq>
     </url>
     <url>
         <loc>https://tonesynth.com/applications</loc>
         <lastmod>{today}</lastmod>
-        <priority>0.9</priority>
+        <priority>0.7</priority>
         <changefreq>monthly</changefreq>
     </url>
     <url>
         <loc>https://tonesynth.com/traditions</loc>
         <lastmod>{today}</lastmod>
-        <priority>0.9</priority>
+        <priority>0.7</priority>
         <changefreq>monthly</changefreq>
     </url>
     <url>
         <loc>https://tonesynth.com/faq</loc>
         <lastmod>{today}</lastmod>
-        <priority>0.9</priority>
+        <priority>0.7</priority>
         <changefreq>monthly</changefreq>
     </url>
     <url>
         <loc>https://tonesynth.com/for-tinnitus</loc>
         <lastmod>{today}</lastmod>
-        <priority>0.9</priority>
+        <priority>0.8</priority>
         <changefreq>monthly</changefreq>
     </url>
     <url>
         <loc>https://tonesynth.com/for-tuning</loc>
         <lastmod>{today}</lastmod>
-        <priority>0.9</priority>
+        <priority>0.8</priority>
         <changefreq>monthly</changefreq>
     </url>
     <url>
         <loc>https://tonesynth.com/for-hearing-test</loc>
         <lastmod>{today}</lastmod>
-        <priority>0.9</priority>
+        <priority>0.8</priority>
         <changefreq>monthly</changefreq>
     </url>
     <url>
         <loc>https://tonesynth.com/for-studying</loc>
         <lastmod>{today}</lastmod>
-        <priority>0.9</priority>
+        <priority>0.8</priority>
         <changefreq>monthly</changefreq>
     </url>
     <url>
         <loc>https://tonesynth.com/for-music-production</loc>
         <lastmod>{today}</lastmod>
-        <priority>0.9</priority>
+        <priority>0.8</priority>
         <changefreq>monthly</changefreq>
     </url>
 </urlset>'''

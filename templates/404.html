@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Page Not Found - That Page Hit a Wrong Note | ToneSynth{% endblock %}
+
+{% block description %}We could not find that page. Head back to the ToneSynth generator or explore our most popular use cases.{% endblock %}
+
+{% block meta_extra %}
+<meta name="robots" content="noindex, follow">
+{% endblock %}
+
+{% block content %}
+<div class="use-case-container">
+    <div class="use-case-hero">
+        <h1>That page hit a wrong note</h1>
+        <p class="hero-subtitle">We could not find the page you were after. It may have moved, or the link might be off by a hertz. Let's get you back to something that plays.</p>
+        <a href="/#generator" class="cta-button"><i class="ri-play-circle-line" aria-hidden="true"></i> Back to the generator</a>
+    </div>
+
+    <section class="use-case-section">
+        <h2>Popular places to land</h2>
+        <p>Here are a few of the things people come to ToneSynth for:</p>
+        <ul>
+            <li><a href="/for-tuning">Tuning instruments</a> with a stable 440 Hz reference pitch.</li>
+            <li><a href="/for-music-production">Music production</a> reference and test tones for your DAW.</li>
+            <li><a href="/for-hearing-test">An at-home hearing test</a> across the audible range.</li>
+            <li><a href="/for-tinnitus">Tinnitus and sound therapy</a> pitch matching.</li>
+        </ul>
+    </section>
+
+    <section class="use-case-section">
+        <h2>More from the Audio Tools Network</h2>
+        <p>Looking for a different kind of sound? Try one of our sister sites:</p>
+        <ul>
+            <li><a href="https://focushum.com" target="_blank" rel="noopener">Focus Hum</a> for white, pink, and brown noise.</li>
+            <li><a href="https://binauralhq.com" target="_blank" rel="noopener">BinauralHQ</a> for binaural beats and brainwave frequencies.</li>
+        </ul>
+    </section>
+</div>
+{% endblock %}
