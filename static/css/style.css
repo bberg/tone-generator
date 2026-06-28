@@ -2236,3 +2236,307 @@ body {
 .network-card i{color:var(--primary);font-size:1.4rem;}
 .nt-name{font-weight:700;color:var(--text);}
 .nt-blurb{font-size:.8125rem;color:var(--text-secondary);}
+
+
+/* === DESIGN SYSTEM V2 === */
+/* ============================================================
+   ToneSynth — Design System v2 (bespoke)
+   Concept: power on the oscillator. Synthwave violet→magenta→cyan
+   on near-black, the waveform shape is the glowing centerpiece,
+   a big monospace Hz readout, one gradient Play pill.
+   Strategy: (1) brief PALETTE via :root overrides = instant identity;
+   (2) shared ELEVATION layer = world-class bar; (3) synth-specific
+   touches (faceplate wave buttons, neon scope, Hz readout).
+   CSS ONLY — markup/ads/trust untouched.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+/* ---- Palette: electric synth violet → magenta → cyan ---- */
+:root {
+  --primary: #b066f8;
+  --primary-dark: #8a2fe0;
+  --primary-light: #ecd9ff;
+  --accent: #ff3dbe;
+  --cyan: #5ce1ff;
+  --bg: #0a0612;
+  --surface: #150e24;
+  --surface-raised: #1d1430;
+  --text: #f5f1fc;
+  --text-secondary: #b7abcf;
+  --text-muted: #82769c;
+  --border: #271b3c;
+  --border-focus: #3c2c5a;
+  --grad: linear-gradient(120deg, #a855f7 0%, #ff3dbe 52%, #5ce1ff 110%);
+  --glow: 0 0 0 1px rgba(168,85,247,.18), 0 18px 50px -12px rgba(168,85,247,.45);
+  --shadow-lg: 0 24px 60px -18px rgba(0,0,0,.85), 0 8px 24px -12px rgba(0,0,0,.7);
+}
+
+/* ---- Ambient background: depth instead of flat black ---- */
+body {
+  background:
+    radial-gradient(1100px 620px at 16% -8%, rgba(168,85,247,.22), transparent 60%),
+    radial-gradient(900px 560px at 94% 4%, rgba(255,61,190,.16), transparent 55%),
+    radial-gradient(820px 620px at 50% 122%, rgba(92,225,255,.12), transparent 60%),
+    var(--bg) !important;
+  background-attachment: fixed;
+}
+
+/* ---- Container: glassy hairline card with colored lift ---- */
+.container {
+  border: 1px solid rgba(255,255,255,.06);
+  border-radius: 22px;
+  box-shadow: var(--shadow-lg), var(--glow);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.028), rgba(255,255,255,0) 260px),
+    var(--surface);
+}
+
+/* ---- Hero: display type + gradient wordmark ---- */
+.page-header {
+  padding: 3.5rem 3rem 2.25rem;
+  background: transparent;
+  border-bottom: 1px solid rgba(255,255,255,.05);
+}
+.header-content h1,
+.header-content .site-title {
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-size: clamp(2.6rem, 5.4vw, 3.6rem);
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  line-height: 1.0;
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.tagline {
+  font-size: 1.075rem;
+  color: var(--text-secondary);
+  max-width: 58ch;
+  margin: 0.85rem auto 0;
+  line-height: 1.55;
+}
+.page-header::after { height: 3px; background: var(--grad); opacity: .95; }
+
+/* ---- Badges: refined glass pills ---- */
+.header-badge {
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 2rem;
+  backdrop-filter: blur(6px);
+  color: var(--text-secondary);
+  transition: transform .2s ease, border-color .2s ease;
+}
+.header-badge:hover { transform: translateY(-1px); border-color: rgba(168,85,247,.5); }
+.header-badge i { color: var(--accent); }
+
+/* ---- Nav: glass strip + animated active underline ---- */
+.mini-nav {
+  background: rgba(255,255,255,.02);
+  border-bottom: 1px solid rgba(255,255,255,.05);
+}
+.nav-link {
+  border-right: 1px solid rgba(255,255,255,.05);
+  transition: color .2s ease, background .2s ease;
+}
+.nav-link::after {
+  content: ''; position: absolute; left: 1.25rem; right: 1.25rem; bottom: 0;
+  height: 2px; background: var(--grad); transform: scaleX(0); transform-origin: left;
+  transition: transform .22s ease;
+}
+.nav-link:hover { color: var(--text); background: rgba(168,85,247,.08); }
+.nav-link:hover::after { transform: scaleX(1); }
+
+/* ---- Section panels (presets / controls / preset groups) ---- */
+.preset-group, .control-group, .preset-card {
+  background: linear-gradient(180deg, rgba(255,255,255,.022), rgba(255,255,255,0)) , var(--surface-raised);
+  border: 1px solid rgba(255,255,255,.06);
+  border-radius: 16px !important;
+}
+.preset-group h3 { color: var(--accent); border-bottom-color: rgba(255,255,255,.07); }
+.control-group h3::before { background: var(--grad); }
+
+/* ---- Waveform shape buttons: glowing synth faceplate ---- */
+.preset-group:first-child .preset-btn[data-waveform] {
+  flex: 1 1 calc(50% - 0.5rem);
+  justify-content: center;
+  padding: 0.9rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,0)), #120b20;
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 14px !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.05), 0 6px 18px -12px rgba(0,0,0,.9);
+}
+.preset-btn[data-waveform] i { font-size: 1.15rem; opacity: .9; }
+.preset-btn[data-waveform]:hover {
+  border-color: rgba(168,85,247,.5);
+  color: var(--text);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px -16px rgba(168,85,247,.7), inset 0 1px 0 rgba(255,255,255,.08);
+}
+.preset-group:first-child .preset-btn[data-waveform].active {
+  background: var(--grad);
+  border-color: transparent;
+  color: #1a0a26;
+  text-shadow: 0 1px 0 rgba(255,255,255,.25);
+  box-shadow: 0 12px 34px -10px rgba(255,61,190,.6), inset 0 1px 0 rgba(255,255,255,.4);
+}
+.preset-group:first-child .preset-btn[data-waveform].active i { opacity: 1; }
+
+/* ---- Quick preset / fine / interval / freq chips ---- */
+.preset-btn, .fine-btn, .interval-btn, .freq-preset-btn {
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 10px !important;
+  color: var(--text-secondary);
+  transition: transform .15s ease, border-color .15s ease, color .15s ease, box-shadow .15s ease;
+}
+.preset-btn:hover, .fine-btn:hover, .interval-btn:hover, .freq-preset-btn:hover {
+  border-color: rgba(168,85,247,.55);
+  color: var(--primary-light);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px -14px rgba(168,85,247,.7);
+}
+.preset-btn.active, .interval-btn.active {
+  background: var(--grad);
+  border-color: transparent;
+  color: #1a0a26;
+}
+.preset-btn i { color: inherit; }
+
+/* ---- Status badge ---- */
+.status-badge {
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 999px;
+}
+.status-badge.playing {
+  background: rgba(255,61,190,.1);
+  border-color: rgba(255,61,190,.5);
+  color: var(--accent);
+}
+.status-badge.playing .status-icon { color: var(--accent); }
+
+/* ---- Primary Play action: gradient pill, glow + lift ---- */
+.primary-btn {
+  background: var(--grad) !important;
+  border: none !important;
+  color: #160a22 !important;
+  font-weight: 700 !important;
+  border-radius: 999px !important;
+  letter-spacing: -0.01em;
+  box-shadow: 0 14px 38px -10px rgba(255,61,190,.55), inset 0 1px 0 rgba(255,255,255,.4) !important;
+  transition: transform .18s ease, box-shadow .18s ease, filter .18s ease !important;
+}
+.primary-btn:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 20px 48px -10px rgba(255,61,190,.72), inset 0 1px 0 rgba(255,255,255,.5) !important;
+  filter: saturate(1.08) !important;
+}
+.primary-btn.playing {
+  background: linear-gradient(120deg, #ff3dbe, #ff6a6a) !important;
+  color: #fff !important;
+  box-shadow: 0 14px 38px -10px rgba(255,61,120,.6), inset 0 1px 0 rgba(255,255,255,.3) !important;
+}
+.primary-btn.playing:hover { filter: saturate(1.05) brightness(1.03) !important; }
+
+/* ---- Oscilloscope: neon glass scope ---- */
+.waveform-container {
+  background:
+    radial-gradient(120% 90% at 50% 0%, rgba(168,85,247,.10), transparent 70%),
+    #0b0716 !important;
+  border: 1px solid rgba(168,85,247,.22) !important;
+  border-radius: 16px !important;
+  box-shadow: inset 0 0 40px -8px rgba(168,85,247,.25), 0 18px 40px -22px rgba(168,85,247,.5) !important;
+}
+.waveform-title { color: var(--text-muted) !important; letter-spacing: .12em; }
+.waveform-info {
+  color: var(--cyan) !important;
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+  letter-spacing: .02em;
+}
+#waveformCanvas {
+  background: #07040f !important;
+  border-radius: 10px !important;
+  box-shadow: inset 0 0 30px -6px rgba(92,225,255,.18);
+}
+
+/* ---- Big monospace Hz readout ---- */
+.frequency-row input[type="number"] {
+  width: 132px;
+  font-family: 'Space Mono', monospace;
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--cyan);
+  background: rgba(92,225,255,.05);
+  border: 1px solid rgba(92,225,255,.22);
+  border-radius: 12px !important;
+}
+.frequency-row input[type="number"]:focus {
+  border-color: var(--cyan);
+  box-shadow: 0 0 0 3px rgba(92,225,255,.18);
+}
+.control-group .value, #frequencyValue {
+  font-family: 'Space Mono', monospace;
+  color: var(--text-secondary);
+}
+
+/* ---- Note display: tuning aid ---- */
+.note-display {
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.07);
+  border-radius: 12px;
+}
+.note-value {
+  font-family: 'Space Mono', monospace;
+  color: var(--cyan);
+}
+
+/* ---- Inputs / sliders ---- */
+input, select, textarea { border-radius: 12px !important; }
+input[type="range"] { accent-color: var(--primary); }
+.control-group input[type="range"] { background: rgba(255,255,255,.09); }
+.control-group input[type="range"]::-webkit-slider-thumb {
+  background: var(--primary);
+  box-shadow: 0 0 0 4px rgba(168,85,247,.18), 0 2px 6px rgba(0,0,0,.5);
+}
+.control-group input[type="range"]::-webkit-slider-thumb:hover { background: var(--accent); }
+.control-group input[type="range"]::-moz-range-thumb { background: var(--primary); }
+.frequency-row input[type="number"], #frequencyInput { color: var(--cyan); }
+
+/* ---- Toggle switch ---- */
+.toggle-label input:checked + .toggle-switch { background: var(--primary); }
+
+/* ---- Intro / content accents ---- */
+.intro-text {
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.07);
+  border-left: 4px solid transparent;
+  border-image: var(--grad) 1;
+  border-radius: 8px;
+}
+.content-section, .presets-section { background: transparent; border-top-color: rgba(255,255,255,.06); }
+.info-card, .preset-card { border-radius: 16px !important; transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease; }
+.info-card:hover { transform: translateY(-3px); border-color: rgba(168,85,247,.4); box-shadow: 0 16px 36px -16px rgba(168,85,247,.5); }
+
+/* ---- Network / share cards: hover lift ---- */
+.network-card, .tool-card, .card {
+  border-radius: 16px !important;
+  transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+.network-card:hover, .tool-card:hover, .card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(168,85,247,.4);
+  box-shadow: 0 16px 36px -16px rgba(168,85,247,.5);
+}
+.share-btn { border-radius: 999px !important; transition: transform .15s ease, border-color .15s ease, color .15s ease; }
+.share-btn:hover { transform: translateY(-1px); border-color: rgba(168,85,247,.5); color: var(--primary-light); }
+
+/* ---- Type accents ---- */
+h2 { letter-spacing: -0.02em; }
+a { color: var(--primary-light); }
+::selection { background: rgba(168,85,247,.42); color: #fff; }
